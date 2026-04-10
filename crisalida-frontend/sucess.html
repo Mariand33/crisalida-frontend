@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra realizada | Escuela Crisálida</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #140f21, #2d1f47);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 760px;
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 34px 28px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .logo {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 18px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      padding: 6px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+    }
+    p {
+      color: #e7ddff;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 16px;
+    }
+    .pasos {
+      text-align: left;
+      margin: 24px auto;
+      max-width: 560px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 20px 22px;
+    }
+    .pasos li {
+      margin-bottom: 12px;
+      color: #f1ecff;
+    }
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #b84cff, #7f3cff);
+      color: white;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
+    .nota {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #d8cfff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="assets/logo-circular.png" alt="Logo Crisálida" class="logo" />
+
+    <h1>Gracias por tu compra 🙌</h1>
+    <p>
+      Ya diste el primer paso para entrar en Crisálida.
+      Este no es solo un curso: es un proceso.
+    </p>
+
+    <div class="pasos">
+      <ol>
+        <li>Entrá al campus desde el botón de abajo.</li>
+        <li>Comenzá por <strong>Tarología I</strong> y avanzá en orden.</li>
+        <li>Si todavía no tenés acceso completo habilitado, escribinos con tu email de compra.</li>
+      </ol>
+    </div>
+
+    <div class="botones">
+      <a href="index.html" class="btn btn-primary">Ir al campus</a>
+      <a href="https://wa.me/543585189949?text=Hola%2C%20ya%20realic%C3%A9%20mi%20compra%20de%20Cris%C3%A1lida%20y%20quiero%20mi%20acceso." target="_blank" class="btn btn-secondary">Avisar por WhatsApp</a>
+    </div>
+
+    <p class="nota">
+      Importante: conservá el email con el que realizaste la compra.
+    </p>
+  </div>
+</body>
+</html>
