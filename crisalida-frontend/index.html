@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -180,11 +180,12 @@
 </head>
 <body>
 
-  <img src="assets/rueda-zodiacal.png" alt="Rueda zodiacal" class="fondo-simbolo" />
+  <img src="crisalida-frontend/Activos/rueda-zodiacal.png" alt="Rueda zodiacal" class="fondo-simbolo" />
+
 
   <div class="pantalla-login" id="pantalla-login">
     <div class="container">
-      <img src="assets/logo-horizontal.png" alt="Escuela Crisálida" class="logo-login" />
+      <img src="crisalida-frontend/Activos/Logo-horizontal.png" alt="Escuela Crisálida" class="logo-login" />
       <div class="subtitulo">Accedé a tus clases de tarot y astrología</div>
 
       <input type="email" id="email" placeholder="Ingresá tu email" />
@@ -200,9 +201,9 @@
     <div class="panel">
       <div class="panel-header">
         <div class="branding">
-          <img src="assets/logo-circular.png" alt="Logo Crisálida" class="logo-panel" />
+          <img src="crisalida-frontend/Activos/logo-circular.png" alt="Logo Crisálida" class="logo-panel" />
           <div>
-            <img src="assets/logo-horizontal.png" alt="Escuela Crisálida" class="logo-texto" />
+            <img src="crisalida-frontend/Activos/Logo-horizontal.png" alt="Escuela Crisálida" class="logo-texto" />
             <p id="bienvenida">Bienvenido</p>
           </div>
         </div>
@@ -238,6 +239,40 @@
         const usuarioId = data.usuario.id;
         const cursosResponse = await fetch(`http://localhost:3000/mis-cursos/${usuarioId}`);
         const cursos = await cursosResponse.json();
+
+        const lista = document.getElementById("lista-cursos");
+        lista.innerHTML = "";
+
+        cursos.forEach(curso => {
+          const card = document.createElement("div");
+          card.className = "curso-card";
+
+          card.innerHTML = `
+            <h3>${curso.nombre}</h3>
+            <p>${curso.categoria}</p>
+            <button onclick="entrarCurso('${curso.nombre}')">Entrar al curso</button>
+          `;
+
+          lista.appendChild(card);
+        });
+      }
+    }
+
+    function entrarCurso(nombreCurso) {
+      alert("Próximamente entrarás a: " + nombreCurso);
+    }
+
+    function cerrarSesion() {
+      document.getElementById("pantalla-login").classList.remove("oculto");
+      document.getElementById("pantalla-panel").classList.add("oculto");
+      document.getElementById("resultado").innerText = "";
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("lista-cursos").innerHTML = "";
+    }
+  </script>
+</body>
+</html>
 
         const lista = document.getElementById("lista-cursos");
         lista.innerHTML = "";
