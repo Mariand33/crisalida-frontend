@@ -85,6 +85,49 @@
       height: fit-content;
     }
 
+    .progreso-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .progreso-box h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #f4d58d;
+    }
+
+    .barra-progreso {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0 8px;
+    }
+
+    .barra-progreso span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #b84cff, #7f3cff);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .retomar-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     .modulo {
       margin-bottom: 20px;
     }
@@ -103,6 +146,7 @@
       cursor: pointer;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      position: relative;
     }
 
     .clase:hover {
@@ -118,6 +162,16 @@
     .clase.bloqueada {
       opacity: 0.7;
       border-style: dashed;
+    }
+
+    .clase.vista::after {
+      content: "✓ Vista";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 12px;
+      color: #9ef0a8;
+      font-weight: bold;
     }
 
     .clase small {
@@ -151,13 +205,30 @@
       flex-wrap: wrap;
     }
 
-    .pdfs a {
+    .pdfs a,
+    .acciones-clase button {
       background: linear-gradient(90deg, #b84cff, #7f3cff);
       color: white;
       padding: 12px 14px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .acciones-clase {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .acciones-clase button.secundario {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .resumen {
@@ -248,6 +319,13 @@
       font-weight: bold;
     }
 
+    .estado-vista {
+      margin-top: 12px;
+      color: #9ef0a8;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
     @media (max-width: 980px) {
       .layout {
         grid-template-columns: 1fr;
@@ -274,7 +352,19 @@
     </div>
 
     <div class="layout">
-      <aside class="sidebar" id="modulos-container"></aside>
+      <aside class="sidebar">
+        <div class="progreso-box">
+          <h3>Tu progreso</h3>
+          <div id="progreso-texto">0 de 0 clases vistas</div>
+          <div class="barra-progreso">
+            <span id="barra-progreso-fill"></span>
+          </div>
+          <div id="progreso-porcentaje">0%</div>
+          <button id="retomar-btn" class="retomar-btn" style="display:none;">Retomar última clase</button>
+        </div>
+
+        <div id="modulos-container"></div>
+      </aside>
 
       <section>
         <div class="main" id="video-box">
@@ -298,64 +388,173 @@
 
     const container = document.getElementById("modulos-container");
 
-    curso.modulos.forEach((modulo) => {
-      const moduloDiv = document.createElement("div");
-      moduloDiv.className = "modulo";
+    const STORAGE_VISTAS = `crisalida_vistas_${curso.id}`;
+    const STORAGE_ULTIMA = `crisalida_ultima_${curso.id}`;
 
-      const tituloModulo = document.createElement("h2");
-      tituloModulo.textContent = modulo.titulo;
-      moduloDiv.appendChild(tituloModulo);
+    let claseActual = null;
+    let clasesLineales = [];
 
-      modulo.clases.forEach((clase) => {
-        const claseDiv = document.createElement("div");
-        claseDiv.className = "clase";
+    function obtenerVistas() {
+      return JSON.parse(localStorage.getItem(STORAGE_VISTAS) || "[]");
+    }
 
-        let etiqueta = "Ver clase y materiales";
-        let bloqueada = false;
+    function guardarVistas(vistas) {
+      localStorage.setItem(STORAGE_VISTAS, JSON.stringify(vistas));
+    }
 
-        if (clase.tipo === "masterclass") {
-          etiqueta = "🔥 Masterclass";
+    function marcarVista(idClase) {
+      const vistas = obtenerVistas();
+      if (!vistas.includes(idClase)) {
+        vistas.push(idClase);
+        guardarVistas(vistas);
+      }
+      actualizarSidebar();
+      actualizarProgreso();
+      actualizarEstadoVista();
+    }
+
+    function guardarUltimaClase(idClase) {
+      localStorage.setItem(STORAGE_ULTIMA, idClase);
+    }
+
+    function obtenerUltimaClase() {
+      return localStorage.getItem(STORAGE_ULTIMA);
+    }
+
+    function buscarClasePorId(idClase) {
+      return clasesLineales.find(c => String(c.id) === String(idClase));
+    }
+
+    function obtenerSiguienteClase(idClaseActual) {
+      const index = clasesLineales.findIndex(c => String(c.id) === String(idClaseActual));
+      if (index >= 0 && index < clasesLineales.length - 1) {
+        return clasesLineales[index + 1];
+      }
+      return null;
+    }
+
+    function contarClasesNoBloqueadas() {
+      return clasesLineales.filter(c => c.tipo !== "bloqueado").length;
+    }
+
+    function actualizarProgreso() {
+      const vistas = obtenerVistas();
+      const total = contarClasesNoBloqueadas();
+      const vistasValidas = clasesLineales.filter(c => c.tipo !== "bloqueado" && vistas.includes(c.id)).length;
+      const porcentaje = total > 0 ? Math.round((vistasValidas / total) * 100) : 0;
+
+      document.getElementById("progreso-texto").innerText = `${vistasValidas} de ${total} clases vistas`;
+      document.getElementById("barra-progreso-fill").style.width = `${porcentaje}%`;
+      document.getElementById("progreso-porcentaje").innerText = `${porcentaje}%`;
+
+      const ultima = obtenerUltimaClase();
+      const btnRetomar = document.getElementById("retomar-btn");
+
+      if (ultima && buscarClasePorId(ultima)) {
+        btnRetomar.style.display = "inline-block";
+      } else {
+        btnRetomar.style.display = "none";
+      }
+    }
+
+    function actualizarSidebar() {
+      const vistas = obtenerVistas();
+      document.querySelectorAll(".clase").forEach((el) => {
+        const id = el.dataset.id;
+        el.classList.remove("vista");
+        if (vistas.includes(Number(id))) {
+          el.classList.add("vista");
         }
+      });
+    }
 
-        if (clase.tipo === "clave") {
-          etiqueta = "⭐ Clase clave";
-        }
+    function renderSidebar() {
+      container.innerHTML = "";
+      clasesLineales = [];
 
-        if (clase.tipo === "bloqueado") {
-          etiqueta = "🔒 Clase bloqueada";
-          bloqueada = true;
-          claseDiv.classList.add("bloqueada");
-        }
+      curso.modulos.forEach((modulo) => {
+        const moduloDiv = document.createElement("div");
+        moduloDiv.className = "modulo";
 
-        claseDiv.innerHTML = `
-          <strong>${clase.titulo}</strong>
-          <small>${etiqueta}</small>
-        `;
+        const tituloModulo = document.createElement("h2");
+        tituloModulo.textContent = modulo.titulo;
+        moduloDiv.appendChild(tituloModulo);
 
-        if (!bloqueada) {
-          claseDiv.addEventListener("click", () => {
-            document.querySelectorAll(".clase").forEach((el) => el.classList.remove("activa"));
-            claseDiv.classList.add("activa");
-            verClase(clase);
-          });
-        } else {
-          claseDiv.addEventListener("click", () => {
-            document.querySelectorAll(".clase").forEach((el) => el.classList.remove("activa"));
-            claseDiv.classList.add("activa");
-            mostrarBloqueo();
-          });
-        }
+        modulo.clases.forEach((clase) => {
+          clasesLineales.push(clase);
 
-        moduloDiv.appendChild(claseDiv);
+          const claseDiv = document.createElement("div");
+          claseDiv.className = "clase";
+          claseDiv.dataset.id = clase.id;
+
+          let etiqueta = "Ver clase y materiales";
+          let bloqueada = false;
+
+          if (clase.tipo === "masterclass") {
+            etiqueta = "🔥 Masterclass";
+          }
+
+          if (clase.tipo === "clave") {
+            etiqueta = "⭐ Clase clave";
+          }
+
+          if (clase.tipo === "bloqueado") {
+            etiqueta = "🔒 Clase bloqueada";
+            bloqueada = true;
+            claseDiv.classList.add("bloqueada");
+          }
+
+          claseDiv.innerHTML = `
+            <strong>${clase.titulo}</strong>
+            <small>${etiqueta}</small>
+          `;
+
+          if (!bloqueada) {
+            claseDiv.addEventListener("click", () => {
+              document.querySelectorAll(".clase").forEach((el) => el.classList.remove("activa"));
+              claseDiv.classList.add("activa");
+              verClase(clase);
+            });
+          } else {
+            claseDiv.addEventListener("click", () => {
+              document.querySelectorAll(".clase").forEach((el) => el.classList.remove("activa"));
+              claseDiv.classList.add("activa");
+              mostrarBloqueo();
+            });
+          }
+
+          moduloDiv.appendChild(claseDiv);
+        });
+
+        container.appendChild(moduloDiv);
       });
 
-      container.appendChild(moduloDiv);
-    });
+      actualizarSidebar();
+      actualizarProgreso();
+    }
+
+    function actualizarEstadoVista() {
+      if (!claseActual) return;
+      const vistas = obtenerVistas();
+      const estado = document.getElementById("estado-vista");
+      if (!estado) return;
+
+      if (vistas.includes(claseActual.id)) {
+        estado.innerText = "✓ Ya marcaste esta clase como vista";
+      } else {
+        estado.innerText = "";
+      }
+    }
 
     function verClase(clase) {
+      claseActual = clase;
+      guardarUltimaClase(clase.id);
+
       const temasHtml = (clase.temas || [])
         .map((tema) => `<li>${tema}</li>`)
         .join("");
+
+      const siguienteClase = obtenerSiguienteClase(clase.id);
 
       document.getElementById("video-box").innerHTML = `
         <h2 class="video-titulo">${clase.titulo}</h2>
@@ -373,6 +572,15 @@
           ${clase.pdf2 && clase.pdf2 !== "#" ? `<a href="${clase.pdf2}" target="_blank">Descargar PDF práctica</a>` : ""}
         </div>
 
+        <div class="acciones-clase">
+          <button onclick="accionMarcarVista()">Marcar como vista</button>
+          ${siguienteClase && siguienteClase.tipo !== "bloqueado"
+            ? `<button class="secundario" onclick="irASiguienteClase()">Siguiente clase</button>`
+            : ""}
+        </div>
+
+        <div id="estado-vista" class="estado-vista"></div>
+
         <div class="resumen">
           <h3>Resumen de la clase</h3>
           <p>${clase.resumen || ""}</p>
@@ -381,6 +589,29 @@
           <ul>${temasHtml}</ul>
         </div>
       `;
+
+      actualizarEstadoVista();
+      actualizarProgreso();
+    }
+
+    function accionMarcarVista() {
+      if (!claseActual) return;
+      marcarVista(claseActual.id);
+    }
+
+    function irASiguienteClase() {
+      if (!claseActual) return;
+      const siguiente = obtenerSiguienteClase(claseActual.id);
+      if (!siguiente) return;
+
+      document.querySelectorAll(".clase").forEach((el) => {
+        el.classList.remove("activa");
+        if (String(el.dataset.id) === String(siguiente.id)) {
+          el.classList.add("activa");
+        }
+      });
+
+      verClase(siguiente);
     }
 
     function mostrarBloqueo() {
@@ -412,6 +643,25 @@
         .map((c) => `<div class="comentario-item">${c}</div>`)
         .join("");
     }
+
+    document.getElementById("retomar-btn").addEventListener("click", () => {
+      const ultima = obtenerUltimaClase();
+      if (!ultima) return;
+
+      const clase = buscarClasePorId(ultima);
+      if (!clase) return;
+
+      document.querySelectorAll(".clase").forEach((el) => {
+        el.classList.remove("activa");
+        if (String(el.dataset.id) === String(clase.id)) {
+          el.classList.add("activa");
+        }
+      });
+
+      verClase(clase);
+    });
+
+    renderSidebar();
   </script>
 </body>
 </html>
