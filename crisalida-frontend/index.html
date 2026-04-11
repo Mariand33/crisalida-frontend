@@ -5,261 +5,274 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Escuela Crisálida</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
 
     body {
       background: linear-gradient(135deg, #1e1b2e, #3a2d5c);
-      min-height: 100vh;
-      color: white;
-      overflow-x: hidden;
+      min-height: 100vh; color: white; overflow-x: hidden;
     }
 
     .fondo-simbolo {
-      position: fixed;
-      right: -120px;
-      bottom: -120px;
-      width: 420px;
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: 0;
+      position: fixed; right: -120px; bottom: -120px;
+      width: 420px; opacity: 0.08; pointer-events: none; z-index: 0;
     }
 
-    .pantalla-login,
-    .pantalla-panel {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+    .pantalla-login, .pantalla-panel {
+      position: relative; z-index: 1; width: 100%;
+      min-height: 100vh; display: flex;
+      justify-content: center; align-items: center; padding: 20px;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 24px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px); padding: 40px;
+      border-radius: 24px; width: 100%; max-width: 440px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35); text-align: center;
     }
 
-    .logo-login {
-      width: 180px;
-      max-width: 100%;
-      margin: 0 auto 18px;
-      display: block;
-    }
-
-    .subtitulo {
-      margin-bottom: 25px;
-      color: #e4d8ff;
-      font-size: 14px;
-    }
+    .logo-login { width: 180px; max-width: 100%; margin: 0 auto 18px; display: block; }
+    .subtitulo { margin-bottom: 25px; color: #e4d8ff; font-size: 14px; }
 
     input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 14px;
-      border: none;
-      border-radius: 12px;
-      font-size: 15px;
-      outline: none;
+      width: 100%; padding: 14px; margin-bottom: 14px;
+      border: none; border-radius: 12px; font-size: 15px; outline: none;
     }
 
     button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
       background: linear-gradient(90deg, #b84cff, #7f3cff);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+      color: white; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s;
     }
 
-    button:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
+    button:hover { opacity: 0.9; transform: translateY(-1px); }
+    #resultado { margin-top: 18px; font-weight: bold; color: #ff6b6b; }
 
-    #resultado {
-      margin-top: 18px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .panel {
-      width: 100%;
-      max-width: 1150px;
-    }
+    .panel { width: 100%; max-width: 1150px; }
 
     .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 30px; gap: 20px; flex-wrap: wrap;
     }
 
-    .branding {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+    .branding { display: flex; align-items: center; gap: 18px; }
 
     .logo-panel {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      padding: 6px;
+      width: 70px; height: 70px; object-fit: contain;
+      border-radius: 50%; background: rgba(255,255,255,0.08); padding: 6px;
     }
 
-    .logo-texto {
-      width: 220px;
-      max-width: 100%;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .panel-header p {
-      color: #d8cfff;
-    }
-
-    .cerrar-btn {
-      width: auto;
-      padding: 12px 20px;
-    }
+    .logo-texto { width: 220px; max-width: 100%; display: block; margin-bottom: 8px; }
+    .panel-header p { color: #d8cfff; }
+    .cerrar-btn { width: auto; padding: 12px 20px; }
 
     .cursos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
-    .curso-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    .modulo-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px; padding: 24px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
-    .curso-card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
+    .modulo-card h3 { font-size: 18px; margin-bottom: 14px; color: #e4d8ff; }
+
+    .clase-item {
+      padding: 12px; margin-bottom: 10px; border-radius: 12px;
+      cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.2s;
     }
 
-    .curso-card p {
-      color: #d8cfff;
-      margin-bottom: 18px;
+    .clase-item:hover { background: rgba(255,255,255,0.1); }
+    .clase-item.bloqueado { opacity: 0.4; cursor: not-allowed; }
+    .clase-item .titulo-clase { font-size: 14px; font-weight: bold; }
+    .clase-item .duracion { font-size: 12px; color: #d8cfff; margin-top: 4px; }
+
+    .badge-masterclass {
+      display: inline-block; background: #b84cff; color: white;
+      font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-top: 4px;
     }
 
-    .curso-card button {
-      width: 100%;
+    .badge-bloqueado {
+      display: inline-block; background: rgba(255,255,255,0.1); color: #aaa;
+      font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-top: 4px;
     }
 
-    .oculto {
-      display: none;
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); z-index: 100;
+      justify-content: center; align-items: center; padding: 20px;
+    }
+
+    .modal-overlay.activo { display: flex; }
+
+    .modal {
+      background: #1e1b2e; border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px; padding: 28px; width: 100%;
+      max-width: 860px; max-height: 90vh; overflow-y: auto;
+    }
+
+    .modal h2 { font-size: 20px; margin-bottom: 16px; }
+
+    .video-wrap {
+      position: relative; padding-bottom: 56.25%;
+      height: 0; overflow: hidden; border-radius: 12px; margin-bottom: 18px;
+    }
+
+    .video-wrap iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      border: none; border-radius: 12px;
+    }
+
+    .pdfs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+
+    .pdfs a {
+      padding: 10px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white; text-decoration: none; font-size: 14px;
+    }
+
+    .resumen { color: #d8cfff; font-size: 15px; line-height: 1.6; margin-bottom: 14px; }
+    .temas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+
+    .tema {
+      background: rgba(184,76,255,0.2); border: 1px solid rgba(184,76,255,0.3);
+      border-radius: 999px; padding: 4px 12px; font-size: 13px; color: #e4d8ff;
+    }
+
+    .btn-cerrar-modal { width: auto; padding: 10px 20px; background: rgba(255,255,255,0.1); }
+    .oculto { display: none; }
+
+    @media (max-width: 600px) {
+      .panel-header { flex-direction: column; }
+      .cerrar-btn { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <img src="../assets/rueda-zodiacal.png" alt="Rueda zodiacal" class="fondo-simbolo" />
+  <img src="../assets/rueda-zodiacal.png" alt="" class="fondo-simbolo" />
 
-
+  <!-- LOGIN -->
   <div class="pantalla-login" id="pantalla-login">
     <div class="container">
       <img src="../assets/logo-horizontal.png" alt="Escuela Crisálida" class="logo-login" />
       <div class="subtitulo">Accedé a tus clases de tarot y astrología</div>
-
       <input type="email" id="email" placeholder="Ingresá tu email" />
       <input type="password" id="password" placeholder="Ingresá tu contraseña" />
-
       <button onclick="login()">Ingresar</button>
-
       <p id="resultado"></p>
     </div>
   </div>
 
+  <!-- PANEL -->
   <div class="pantalla-panel oculto" id="pantalla-panel">
     <div class="panel">
       <div class="panel-header">
         <div class="branding">
-          <img src="../assets/logo-circular.png" alt="Logo Crisálida" class="logo-panel" />
+          <img src="../assets/logo-circular.png" alt="Logo" class="logo-panel" />
           <div>
             <img src="../assets/logo-horizontal.png" alt="Escuela Crisálida" class="logo-texto" />
-            <p id="bienvenida">Bienvenido</p>
+            <p id="bienvenida">Bienvenida</p>
           </div>
         </div>
         <button class="cerrar-btn" onclick="cerrarSesion()">Cerrar sesión</button>
       </div>
-
       <div class="cursos-grid" id="lista-cursos"></div>
     </div>
   </div>
 
+  <!-- MODAL CLASE -->
+  <div class="modal-overlay" id="modal-clase">
+    <div class="modal">
+      <h2 id="modal-titulo"></h2>
+      <div class="video-wrap" id="modal-video"></div>
+      <div class="pdfs" id="modal-pdfs"></div>
+      <p class="resumen" id="modal-resumen"></p>
+      <div class="temas" id="modal-temas"></div>
+      <button class="btn-cerrar-modal" onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
   <script>
-    async function login() {
-      const email = document.getElementById("email").value;
+    function login() {
+      const email = document.getElementById("email").value.trim().toLowerCase();
       const password = document.getElementById("password").value;
+      const resultado = document.getElementById("resultado");
 
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
+      const usuario = window.usuariosData.find(
+        u => u.email.toLowerCase() === email && u.password === password
+      );
 
-      const data = await response.json();
-
-      document.getElementById("resultado").innerText = data.mensaje;
-
-      if (response.ok) {
+      if (usuario) {
         document.getElementById("pantalla-login").classList.add("oculto");
         document.getElementById("pantalla-panel").classList.remove("oculto");
-        document.getElementById("bienvenida").innerText = `Bienvenido, ${data.usuario.nombre}`;
-
-        const usuarioId = data.usuario.id;
-        const cursosResponse = await fetch(`http://localhost:3000/mis-cursos/${usuarioId}`);
-        const cursos = await cursosResponse.json();
-
-        const lista = document.getElementById("lista-cursos");
-        lista.innerHTML = "";
-
-        cursos.forEach(curso => {
-          const card = document.createElement("div");
-          card.className = "curso-card";
-
-          card.innerHTML = `
-            <h3>${curso.nombre}</h3>
-            <p>${curso.categoria}</p>
-            <button onclick="entrarCurso('${curso.nombre}')">Entrar al curso</button>
-          `;
-
-          lista.appendChild(card);
-        });
+        document.getElementById("bienvenida").innerText = `Bienvenida, ${usuario.nombre} 🌙`;
+        cargarCursos();
+      } else {
+        resultado.innerText = "Email o contraseña incorrectos.";
       }
     }
 
-    function entrarCurso(nombreCurso) {
-      alert("Próximamente entrarás a: " + nombreCurso);
+    function cargarCursos() {
+      const lista = document.getElementById("lista-cursos");
+      lista.innerHTML = "";
+      window.cursosData.forEach(curso => {
+        curso.modulos.forEach(modulo => {
+          const card = document.createElement("div");
+          card.className = "modulo-card";
+          let clasesHTML = modulo.clases.map(clase => {
+            const bloqueado = clase.tipo === "bloqueado";
+            const esMasterclass = clase.tipo === "masterclass";
+            return `
+              <div class="clase-item ${bloqueado ? "bloqueado" : ""}"
+                ${!bloqueado ? `onclick="abrirClase(${clase.id})"` : ""}>
+                <div class="titulo-clase">${clase.titulo}</div>
+                ${clase.duracion ? `<div class="duracion">${clase.duracion}</div>` : ""}
+                ${esMasterclass ? `<span class="badge-masterclass">Masterclass</span>` : ""}
+                ${bloqueado ? `<span class="badge-bloqueado">Próximamente</span>` : ""}
+              </div>`;
+          }).join("");
+          card.innerHTML = `<h3>${modulo.titulo}</h3>${clasesHTML}`;
+          lista.appendChild(card);
+        });
+      });
+    }
+
+    function abrirClase(id) {
+      let clase = null;
+      window.cursosData.forEach(curso => {
+        curso.modulos.forEach(m => {
+          m.clases.forEach(c => { if (c.id === id) clase = c; });
+        });
+      });
+      if (!clase) return;
+
+      document.getElementById("modal-titulo").innerText = clase.titulo;
+      document.getElementById("modal-video").innerHTML = clase.videoId
+        ? `<iframe src="https://www.youtube.com/embed/${clase.videoId}" allowfullscreen></iframe>`
+        : `<p style="color:#d8cfff;padding:20px;">Video no disponible aún.</p>`;
+
+      const pdfs = document.getElementById("modal-pdfs");
+      pdfs.innerHTML = "";
+      if (clase.pdf1) pdfs.innerHTML += `<a href="${clase.pdf1}" target="_blank">📄 Guía PDF</a>`;
+      if (clase.pdf2) pdfs.innerHTML += `<a href="${clase.pdf2}" target="_blank">📝 Práctica PDF</a>`;
+
+      document.getElementById("modal-resumen").innerText = clase.resumen || "";
+      document.getElementById("modal-temas").innerHTML = (clase.temas || [])
+        .map(t => `<span class="tema">${t}</span>`).join("");
+
+      document.getElementById("modal-clase").classList.add("activo");
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal-clase").classList.remove("activo");
+      document.getElementById("modal-video").innerHTML = "";
     }
 
     function cerrarSesion() {
@@ -268,8 +281,9 @@
       document.getElementById("resultado").innerText = "";
       document.getElementById("email").value = "";
       document.getElementById("password").value = "";
-      document.getElementById("lista-cursos").innerHTML = "";
     }
+
+    document.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
   </script>
 </body>
 </html>
