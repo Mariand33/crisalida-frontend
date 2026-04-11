@@ -123,8 +123,3 @@ window.cursosData = [
     ]
   }
 ];
-
-
-    ]
-  }
-];
