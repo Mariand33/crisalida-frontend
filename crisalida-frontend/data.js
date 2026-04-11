@@ -4,7 +4,7 @@
 window.usuariosData = [
   { email: "sabrina@crisalida.com", password: "crsld2026#", nombre: "Sabrina" },
   // Agregá más alumnos así:
-  // { email: "nuevo@email.com", password: "crsld2026#", nombre: "Nombre Alumno" },
+  // { email: "Karina@crisalida.com", password: "crsld2026#", nombre: "Karina" },
 ];
 
 // ============================================
