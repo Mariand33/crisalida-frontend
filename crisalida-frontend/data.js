@@ -2,7 +2,7 @@
 // USUARIOS — agregá uno por alumno que compre
 // ============================================
 window.usuariosData = [
-  { email: "sabrina@crisalida.com", password: "crsld2026#", nombre: "Alumno Prueba" },
+  { email: "sabrina@crisalida.com", password: "crsld2026#", nombre: "Sabrina" },
   // Agregá más alumnos así:
   // { email: "nuevo@email.com", password: "crsld2026#", nombre: "Nombre Alumno" },
 ];
