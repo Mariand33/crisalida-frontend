@@ -54,8 +54,8 @@ window.cursosData = [
             videoId: "PWyIM9RJxt4",
             pdf1: "#",
             pdf2: "#",
-            resumen: "Ingreso al trabajo con Arcanos Mayores, relaciones entre pares numerológicos y primeros fundamentos del recorrido arcano.",
-            temas: ["Arcanos Mayores", "Viaje arcano", "Pares numerológicos", "El Mago", "La Fuerza"],
+            resumen: "Introducción al recorrido de los Arcanos, los pares numerológicos y el Grado I dentro del método de interpretación.",
+            temas: ["Arcanos", "Viaje arcano", "Pares numerológicos", "Grado I"],
             tipo: "clave"
           }
         ]
@@ -64,26 +64,51 @@ window.cursosData = [
         titulo: "Módulo 2 - Profundización",
         clases: [
           {
-           {
-  id: 5,
-  titulo: "Clase 5 - La Papisa y El Colgado",
-  videoId: "hfgn7z-sKUw",
-  pdf1: "#",
-  pdf2: "#",
-  resumen: "Profundización en los arcanos La Papisa y El Colgado como expresiones del tiempo interno, la pausa consciente y los procesos de gestación simbólica. Una clase clave para comprender momentos de aparente quietud que en realidad implican transformación profunda.",
-  temas: [
-    "La Papisa",
-    "El Colgado",
-    "Tiempo interno",
-    "Pausa y proceso",
-    "Transformación simbólica"
-  ],
-  tipo: "clave"
-} 
+            id: 5,
+            titulo: "Clase 5 - La Papisa y El Colgado",
+            videoId: "hfgn7z-sKUw",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "Profundización en los arcanos La Papisa y El Colgado como expresiones del tiempo interno, la pausa consciente y los procesos de gestación simbólica.",
+            temas: ["La Papisa", "El Colgado", "Tiempo interno", "Pausa y proceso"],
+            tipo: "clave"
+          },
           {
-           
+            id: 6,
+            titulo: "Clase 6 - Grado II y III: La Papisa, El Colgado, La Emperatriz y El Arcano Sin Nombre",
+            videoId: "UPltzdo-m1o",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "Clase donde se desarrollan en conjunto los arcanos del Grado II y III, integrando La Papisa y El Colgado con La Emperatriz y El Arcano Sin Nombre como parte de un mismo proceso de transformación interna.",
+            temas: [
+              "La Papisa",
+              "El Colgado",
+              "La Emperatriz",
+              "Arcano Sin Nombre",
+              "Grado II",
+              "Grado III",
+              "Proceso de transformación"
+            ],
+            tipo: "clave"
+          },
+          {
             id: 7,
-            titulo: "Clase 7 - Introducción a los Arcanos Menores",
+            titulo: "Clase 7 - Profundización en la lectura simbólica",
+            videoId: "",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "Clase orientada a profundizar la interpretación de símbolos y relaciones internas dentro del Tarot.",
+            temas: ["Símbolos", "Lectura profunda", "Interpretación"],
+            tipo: "bloqueado"
+          }
+        ]
+      },
+      {
+        titulo: "Módulo 3 - Arcanos Menores",
+        clases: [
+          {
+            id: 8,
+            titulo: "Clase 8 - Introducción a los Arcanos Menores",
             videoId: "",
             pdf1: "#",
             pdf2: "#",
@@ -94,34 +119,15 @@ window.cursosData = [
         ]
       },
       {
-        {
-  id: 6,
-  titulo: "Clase 6 - Grado II y III: La Papisa, El Colgado, La Emperatriz y El Arcano Sin Nombre",
-  videoId: "UPltzdo-m1o",
-  pdf1: "#",
-  pdf2: "#",
-  resumen: "Clase donde se desarrollan en conjunto los arcanos del Grado II y III, integrando La Papisa y El Colgado con La Emperatriz y El Arcano Sin Nombre como parte de un mismo proceso de transformación interna.",
-  temas: [
-    "La Papisa",
-    "El Colgado",
-    "La Emperatriz",
-    "Arcano Sin Nombre",
-    "Grado II",
-    "Grado III",
-    "Proceso de transformación",
-    "Integración de arcanos"
-  ],
-  tipo: "clave"
-}
         titulo: "Módulo 4 - Lectura e Interpretación",
         clases: [
           {
-            id: 8,
-            titulo: "Clase 8 - Cómo interpretar una lectura",
+            id: 9,
+            titulo: "Clase 9 - Cómo interpretar una lectura",
             videoId: "",
             pdf1: "#",
             pdf2: "#",
-            resumen: "Claves para realizar lecturas profundas, responsables y coherentes dentro del método de trabajo.",
+            resumen: "Claves para realizar lecturas profundas, responsables y coherentes dentro del método.",
             temas: ["Lectura", "Interpretación", "Práctica"],
             tipo: "bloqueado"
           }
