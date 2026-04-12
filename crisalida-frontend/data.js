@@ -64,31 +64,24 @@ window.cursosData = [
         titulo: "Módulo 2 - Profundización",
         clases: [
           {
-            id: 5,
-            titulo: "Clase 5 - Profundización en la lectura simbólica",
-            videoId: "",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Clase orientada a profundizar la interpretación de símbolos y relaciones internas dentro del Tarot.",
-            temas: ["Símbolos", "Lectura profunda", "Interpretación"],
-            tipo: "bloqueado"
-          },
+           {
+  id: 5,
+  titulo: "Clase 5 - La Papisa y El Colgado",
+  videoId: "hfgn7z-sKUw",
+  pdf1: "#",
+  pdf2: "#",
+  resumen: "Profundización en los arcanos La Papisa y El Colgado como expresiones del tiempo interno, la pausa consciente y los procesos de gestación simbólica. Una clase clave para comprender momentos de aparente quietud que en realidad implican transformación profunda.",
+  temas: [
+    "La Papisa",
+    "El Colgado",
+    "Tiempo interno",
+    "Pausa y proceso",
+    "Transformación simbólica"
+  ],
+  tipo: "clave"
+} 
           {
-            id: 6,
-            titulo: "Clase 6 - Correspondencias y sentido interpretativo",
-            videoId: "",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Trabajo sobre correspondencias internas del Tarot y su aplicación en procesos de lectura y comprensión.",
-            temas: ["Correspondencias", "Sentido", "Interpretación"],
-            tipo: "bloqueado"
-          }
-        ]
-      },
-      {
-        titulo: "Módulo 3 - Arcanos Menores",
-        clases: [
-          {
+           
             id: 7,
             titulo: "Clase 7 - Introducción a los Arcanos Menores",
             videoId: "",
@@ -101,6 +94,25 @@ window.cursosData = [
         ]
       },
       {
+        {
+  id: 6,
+  titulo: "Clase 6 - Grado II y III: La Papisa, El Colgado, La Emperatriz y El Arcano Sin Nombre",
+  videoId: "UPltzdo-m1o",
+  pdf1: "#",
+  pdf2: "#",
+  resumen: "Clase donde se desarrollan en conjunto los arcanos del Grado II y III, integrando La Papisa y El Colgado con La Emperatriz y El Arcano Sin Nombre como parte de un mismo proceso de transformación interna.",
+  temas: [
+    "La Papisa",
+    "El Colgado",
+    "La Emperatriz",
+    "Arcano Sin Nombre",
+    "Grado II",
+    "Grado III",
+    "Proceso de transformación",
+    "Integración de arcanos"
+  ],
+  tipo: "clave"
+}
         titulo: "Módulo 4 - Lectura e Interpretación",
         clases: [
           {
