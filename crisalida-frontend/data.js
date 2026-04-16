@@ -3,7 +3,7 @@
 // ========================================
 window.usuariosData = [
   { email: "sabrina@crisalida.com", password: "crsld2026#", nombre: "Sabrina" },
-  { email: "karina@crisalida.com", password: "edicion2026#", nombre: "Karina" },
+  { email: "karina@crisalida.com", password: "creador26", nombre: "Karina" },
   { email: "rosy@crisalida.com", password: "creador33", nombre: "Rosy" }
 ];
 
