@@ -52,67 +52,111 @@ window.cursosData = [
         ]
       },
       {
-        titulo: "Módulo 2 - Profundización",
-        clases: [
-          {
-            id: 4,
-            titulo: "Clase 4 - Introducción a los Arcanos: El viaje arcano, pares numerológicos y Grado I El Mago y La Fuerza",
-            videoId: "PWyIM9RJxt4",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Introducción al recorrido de los Arcanos, los pares numerológicos y el Grado I dentro del método de interpretación.",
-            temas: ["Arcanos", "Viaje arcano", "Pares numerológicos", "Grado I"],
-            tipo: "clave"
-          },
-          {
-            id: 5,
-            titulo: "Clase 5 - Grado II La Papisa y El Colgado",
-            videoId: "hfgn7z-sKUw",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Profundización en los arcanos La Papisa y El Colgado como expresiones del tiempo interno, la pausa consciente y los procesos de gestación simbólica.",
-            temas: ["La Papisa", "El Colgado", "Tiempo interno", "Pausa y proceso"],
-            tipo: "clave"
-          },
-          {
-            id: 6,
-            titulo: "Clase 6 - Grado II y III: La Papisa, El Colgado, La Emperatriz y El Arcano Sin Nombre",
-            videoId: "UPltzdo-m1o",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Clase donde se desarrollan en conjunto los arcanos del Grado II y III, integrando La Papisa y El Colgado con La Emperatriz y El Arcano Sin Nombre como parte de un mismo proceso de transformación interna.",
-            temas: [
-              "La Papisa",
-              "El Colgado",
-              "La Emperatriz",
-              "Arcano Sin Nombre",
-              "Grado II",
-              "Grado III",
-              "Proceso de transformación"
-            ],
-            tipo: "clave"
-          },
-          {
-          
-  id: 7,
-  titulo: "Clase 7 - Grado IIII y V El Emperador y La Templanza, El Papa y El Diablo",
-  videoId: "796hrEe7xjE",
-  pdf1: "#",
-  pdf2: "#",
-  resumen: "Clase de integración donde se profundiza la comprensión de los arcanos trabajados, unificando los conceptos de los grados anteriores en una mirada más completa del proceso.",
-  temas: [
-    "Integración",
-    "Arcanos",
-    "Profundización",
-    "Proceso interno",
-    "Lectura simbólica"
-  ],
-  tipo: "clave"
-
-          }
-        ]
-      },
-      {
+  titulo: "Módulo 2 - Profundización",
+  clases: [
+    {
+      id: 4,
+      titulo: "Clase 4 - Grado I: Introducción al viaje arcano. El Mago y La Fuerza",
+      videoId: "PWyIM9RJxt4",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Introducción al recorrido de los Arcanos, los pares numerológicos y el inicio del proceso de interpretación desde el Grado I.",
+      temas: ["Grado I", "Arcanos", "Viaje arcano", "Base del método"],
+      tipo: "clave"
+    },
+    {
+      id: 5,
+      titulo: "Clase 5 - Grado II: La Papisa y El Colgado",
+      videoId: "hfgn7z-sKUw",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Trabajo sobre el tiempo interno, la pausa consciente y los procesos de gestación simbólica.",
+      temas: ["La Papisa", "El Colgado", "Tiempo interno", "Proceso"],
+      tipo: "clave"
+    },
+    {
+      id: 6,
+      titulo: "Clase 6 - Grado III: Integración de procesos. La Emperatriz y El Arcano Sin Nombre",
+      videoId: "UPltzdo-m1o",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Integración de los grados anteriores junto con nuevos arcanos como parte del proceso de transformación.",
+      temas: ["Integración", "Proceso", "Transformación"],
+      tipo: "clave"
+    },
+    {
+      id: 7,
+      titulo: "Clase 7 - Grado IIII: Profundización simbólica El Emperador y La Templanza",
+      videoId: "796hrEe7xjE",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Profundización en la lectura simbólica y comprensión interna del proceso.",
+      temas: ["Símbolos", "Lectura", "Profundización"],
+      tipo: "clave"
+    },
+    {
+      id: 8,
+      titulo: "Clase 8 - Grado VI: El Enamorado y La Casa Dios",
+      videoId: "fFfSWRC-3X4",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Trabajo sobre elección, vínculo, crisis y ruptura de estructuras como parte del proceso de transformación.",
+      temas: [
+        "El Enamorado",
+        "La Casa Dios",
+        "Elección",
+        "Crisis",
+        "Transformación"
+      ],
+      tipo: "clave"
+    },
+    {
+      id: 9,
+      titulo: "Clase 9 - Grado VII: Dirección y avance El Carro y La Estrella",
+      videoId: "ocSfKhKTnb8",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Profundización en el avance consciente, dirección del proceso y toma de decisiones.",
+      temas: [
+        "Grado VII",
+        "Dirección",
+        "Avance",
+        "Conciencia"
+      ],
+      tipo: "clave"
+    },
+    {
+      id: 10,
+      titulo: "Clase 10 - Grado VIII",
+      videoId: "",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Continuación del proceso de transformación y consolidación interna.",
+      temas: ["Grado VIII", "Transformación"],
+      tipo: "bloqueado"
+    },
+    {
+      id: 11,
+      titulo: "Clase 11 - Grado VIIII",
+      videoId: "",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Interiorización, comprensión profunda y síntesis del recorrido.",
+      temas: ["Grado VIIII", "Interiorización"],
+      tipo: "bloqueado"
+    },
+    {
+      id: 12,
+      titulo: "Clase 12 - Grado X: Integración final",
+      videoId: "",
+      pdf1: "#",
+      pdf2: "#",
+      resumen: "Cierre del recorrido de grados e integración completa del proceso.",
+      temas: ["Grado X", "Integración", "Cierre"],
+      tipo: "bloqueado"
+    }
+  ]
+}
         titulo: "Módulo 3 - Arcanos Menores",
         clases: [
           {
