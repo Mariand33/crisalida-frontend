@@ -93,14 +93,22 @@ window.cursosData = [
             tipo: "clave"
           },
           {
-            id: 7,
-            titulo: "Clase 7 - Profundización en la lectura simbólica",
-            videoId: "",
-            pdf1: "#",
-            pdf2: "#",
-            resumen: "Clase orientada a profundizar la interpretación de símbolos y relaciones internas dentro del Tarot.",
-            temas: ["Símbolos", "Lectura profunda", "Interpretación"],
-            tipo: "bloqueado"
+           {
+  id: 7,
+  titulo: "Clase 7 - Integración y profundización de los arcanos",
+  videoId: "796hrEe7xjE",
+  pdf1: "#",
+  pdf2: "#",
+  resumen: "Clase de integración donde se profundiza la comprensión de los arcanos trabajados, unificando los conceptos de los grados anteriores en una mirada más completa del proceso.",
+  temas: [
+    "Integración",
+    "Arcanos",
+    "Profundización",
+    "Proceso interno",
+    "Lectura simbólica"
+  ],
+  tipo: "clave"
+
           }
         ]
       },
