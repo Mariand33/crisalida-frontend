@@ -56,7 +56,7 @@ window.cursosData = [
         clases: [
           {
             id: 4,
-            titulo: "Clase 4 - Introducción a los Arcanos: El viaje arcano, pares numerológicos y Grado I",
+            titulo: "Clase 4 - Introducción a los Arcanos: El viaje arcano, pares numerológicos y Grado I El Mago y La Fuerza",
             videoId: "PWyIM9RJxt4",
             pdf1: "#",
             pdf2: "#",
@@ -66,7 +66,7 @@ window.cursosData = [
           },
           {
             id: 5,
-            titulo: "Clase 5 - La Papisa y El Colgado",
+            titulo: "Clase 5 - Grado II La Papisa y El Colgado",
             videoId: "hfgn7z-sKUw",
             pdf1: "#",
             pdf2: "#",
@@ -95,7 +95,7 @@ window.cursosData = [
           {
           
   id: 7,
-  titulo: "Clase 7 - Integración y profundización de los arcanos",
+  titulo: "Clase 7 - Grado IIII y V El Emperador y La Templanza, El Papa y El Diablo",
   videoId: "796hrEe7xjE",
   pdf1: "#",
   pdf2: "#",
