@@ -48,7 +48,13 @@ window.cursosData = [
             resumen: "Clase extensa sobre la lógica numerológica y cromática del Tarot como base de interpretación y lectura profunda.",
             temas: ["Numerología", "Colores", "Lectura simbólica"],
             tipo: "masterclass"
-          },
+       
+          }
+        ]
+      },
+      {
+        titulo: "Módulo 2 - Profundización",
+        clases: [
           {
             id: 4,
             titulo: "Clase 4 - Introducción a los Arcanos: El viaje arcano, pares numerológicos y Grado I",
@@ -58,13 +64,6 @@ window.cursosData = [
             resumen: "Introducción al recorrido de los Arcanos, los pares numerológicos y el Grado I dentro del método de interpretación.",
             temas: ["Arcanos", "Viaje arcano", "Pares numerológicos", "Grado I"],
             tipo: "clave"
-          }
-        ]
-      },
-      {
-        titulo: "Módulo 2 - Profundización",
-        clases: [
-          {
             id: 5,
             titulo: "Clase 5 - La Papisa y El Colgado",
             videoId: "hfgn7z-sKUw",
