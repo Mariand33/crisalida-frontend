@@ -93,7 +93,7 @@ window.cursosData = [
             tipo: "clave"
           },
           {
-           {
+          
   id: 7,
   titulo: "Clase 7 - Integración y profundización de los arcanos",
   videoId: "796hrEe7xjE",
