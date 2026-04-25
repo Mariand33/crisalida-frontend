@@ -114,7 +114,7 @@ window.cursosData = [
           },
           {
             id: 9,
-            titulo: "Clase 9 - Grado VII",
+            titulo: "Clase 9 - Grado VII: El Carro y La Estrella",
             videoId: "ocSfKhKTnb8",
             pdf1: "#",
             pdf2: "#",
@@ -124,13 +124,13 @@ window.cursosData = [
           },
           {
             id: 10,
-            titulo: "Clase 10 - Grado VIII",
-            videoId: "",
+            titulo: "Clase 10 - Grado VIII: La Justicia y La Luna",
+            videoId: "WXwb074eY2w",
             pdf1: "#",
             pdf2: "#",
             resumen: "Continuación del proceso.",
             temas: ["Grado VIII"],
-            tipo: "bloqueado"
+            tipo: "clave"
           },
           {
             id: 11,
