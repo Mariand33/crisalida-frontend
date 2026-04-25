@@ -134,8 +134,8 @@ window.cursosData = [
           },
           {
             id: 11,
-            titulo: "Clase 11 - Grado IX",
-            videoId: "",
+            titulo: "Clase 11 - Grado VIIII . El Ermitaño y El Sol (Parte 1)",
+            videoId: "kxJhDnzETLQ&t=1534s",
             pdf1: "#",
             pdf2: "#",
             resumen: "Interiorización.",
@@ -144,12 +144,12 @@ window.cursosData = [
           },
           {
             id: 12,
-            titulo: "Clase 12 - Grado X",
-            videoId: "",
+            titulo: "Clase 12 - Grado VIIII . El Ermitaño y El Sol (Parte 2)",
+            videoId: "pVTBloY-QMI",
             pdf1: "#",
             pdf2: "#",
             resumen: "Integración final.",
-            temas: ["Grado X"],
+            temas: ["Grado VIIII"],
             tipo: "bloqueado"
           }
         ]
