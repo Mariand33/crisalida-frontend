@@ -140,7 +140,7 @@ window.cursosData = [
             pdf2: "#",
             resumen: "Interiorización.",
             temas: ["Grado IX"],
-            tipo: "bloqueado"
+            tipo: "clave"
           },
           {
             id: 12,
@@ -150,8 +150,18 @@ window.cursosData = [
             pdf2: "#",
             resumen: "Integración final.",
             temas: ["Grado VIIII"],
-            tipo: "bloqueado"
-          }
+            tipo: "clave"
+          },
+           {
+          id: 13,
+            titulo: "Clase 13 - Grado X . La Rueda de Fortuna y El Juicio",
+            videoId: "tvCVSNWbLgs",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "Integración final.",
+            temas: ["Grado X"],
+            tipo: "clave"
+          },
         ]
       },
 
