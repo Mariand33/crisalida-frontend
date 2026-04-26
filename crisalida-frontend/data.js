@@ -155,7 +155,7 @@ window.cursosData = [
            {
           id: 13,
             titulo: "Clase 13 - Grado X . La Rueda de Fortuna y El Juicio",
-            videoId: "tvCVSNWbLgs",
+            videoId: "live/tvCVSNWbLgs",
             pdf1: "#",
             pdf2: "#",
             resumen: "Integración final.",
