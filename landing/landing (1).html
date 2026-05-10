@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escuela Crisálida | Espacio de Autoconocimiento</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-1: #140f21;
+      --bg-2: #2d1f47;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --muted: #d8cfff;
+      --accent: #b84cff;
+      --accent-2: #7f3cff;
+      --gold: #f4d58d;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fondo-simbolo {
+      position: fixed;
+      right: -140px;
+      bottom: -140px;
+      width: 460px;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(20, 15, 33, 0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 20;
+    }
+
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img.logo-circular {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      padding: 4px;
+    }
+
+    .brand img.logo-horizontal {
+      width: 180px;
+      object-fit: contain;
+    }
+
+    .nav-cta {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      font-weight: bold;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gold);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .hero-note {
+      color: var(--gold);
+      font-size: 15px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 420px;
+    }
+
+    .section {
+      padding: 66px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: clamp(28px, 4vw, 44px);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 auto 34px;
+      font-size: 18px;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .list {
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .authority-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .authority-grid img {
+      border-radius: 20px;
+      height: 280px;
+      width: 100%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat strong {
+      font-size: 28px;
+      display: block;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .program-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      min-height: 220px;
+    }
+
+    .program-card .numero {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .program-card h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .program-card p {
+      color: var(--muted);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .benefit {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+    }
+
+    .price-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 36px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-tag {
+      display: inline-block;
+      color: var(--gold);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: clamp(42px, 6vw, 74px);
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .price-box p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 17px;
+    }
+
+    .price-includes {
+      text-align: left;
+      max-width: 480px;
+      margin: 20px auto 26px;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 20px 0 80px;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 14px;
+    }
+
+    .cta-final p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 24px;
+      font-size: 18px;
+    }
+
+    .footer {
+      padding: 26px 0 40px;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cards-3,
+      .authority-grid,
+      .stats,
+      .program-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-card img {
+        min-height: 280px;
+      }
+
+      .navbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+    }
+  
+    /* ── HERRAMIENTAS CRISÁLIDA ── */
+    @keyframes wheelIn{from{opacity:0;transform:rotate(-50deg) scale(0.75)}to{opacity:1;transform:rotate(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .carta-section,.tarot-section{
+      background:linear-gradient(180deg,transparent,rgba(184,76,255,0.03),transparent);
+      padding:66px 0;
+    }
+
+    .cf-label{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(216,207,255,0.55);display:block;margin-bottom:6px;}
+    .cf-input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:white;font-family:Arial,sans-serif;font-size:15px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s;-webkit-appearance:none;}
+    .cf-input::placeholder{color:rgba(216,207,255,0.3);}
+    .cf-input:focus{border-color:#b84cff;box-shadow:0 0 0 3px rgba(184,76,255,0.12);}
+    .cf-input:disabled{opacity:0.3;}
+    .cf-unknown{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;margin-top:8px;}
+    .cf-unknown input[type=checkbox]{display:none;}
+    .cf-check{width:17px;height:17px;border:1px solid rgba(255,255,255,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,border-color .2s;}
+    .cf-check svg{opacity:0;transition:opacity .2s;}
+    .cf-unknown input:checked~.cf-check{background:#b84cff;border-color:#b84cff;}
+    .cf-unknown input:checked~.cf-check svg{opacity:1;}
+    .orbit-ring{width:48px;height:48px;border:2px solid rgba(184,76,255,0.2);border-top-color:#b84cff;border-radius:50%;animation:spin .9s linear infinite;flex-shrink:0;}
+
+    .p-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+    .p-row:last-child{border-bottom:none;}
+    .p-sym{font-size:16px;width:24px;text-align:center;flex-shrink:0;}
+    .p-name{font-size:12px;color:#d8cfff;width:78px;flex-shrink:0;}
+    .p-sign{font-size:.95rem;color:white;flex:1;}
+    .p-deg{font-size:10px;color:rgba(216,207,255,.5);}
+    .p-house{font-size:10px;color:#f4d58d;background:rgba(244,213,141,.1);border-radius:5px;padding:2px 6px;}
+
+    .tt-card-slot{display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .tt-card-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#f4d58d;opacity:0.75;text-align:center;}
+    .tt-card{width:100%;max-width:115px;aspect-ratio:0.56;perspective:800px;cursor:pointer;}
+    .tt-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.4,0,.2,1);border-radius:10px;}
+    .tt-inner.flipped{transform:rotateY(180deg);}
+    .tt-face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);}
+    .tt-back{background:#0d0b18;display:flex;align-items:center;justify-content:center;}
+    .tt-front{transform:rotateY(180deg);background:white;display:flex;align-items:center;justify-content:center;}
+    .tt-front img{width:100%;height:100%;object-fit:contain;border-radius:10px;}
+    .tt-card:hover .tt-back{box-shadow:0 6px 24px rgba(0,0,0,.6),0 0 20px rgba(184,76,255,.3);}
+
+    .interp-block{background:rgba(255,255,255,0.04);border:1px solid rgba(184,76,255,0.15);border-radius:16px;padding:20px 22px;margin-bottom:12px;animation:fadeUp .5s ease both;}
+    .interp-pos-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#f4d58d;background:rgba(244,213,141,0.1);border-radius:6px;padding:3px 8px;display:inline-block;margin-bottom:8px;}
+    .interp-card-title{font-size:1.05rem;color:white;margin-bottom:8px;font-weight:500;}
+    .interp-body{font-size:.95rem;font-style:italic;color:#d8cfff;line-height:1.75;}
+
+    .divina-tag{font-size:11px;letter-spacing:3px;color:#f4d58d;opacity:0.7;text-align:center;margin-top:14px;}
+
+    @media(max-width:600px){.tt-card{max-width:85px;}}
+
+  </style>
+</head>
+<body>
+  <img src="../assets/rueda-zodiacal.png" alt="Rueda zodiacal" class="fondo-simbolo" />
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <img src="../assets/logo-circular.png" alt="Logo Crisálida" class="logo-circular" />
+        <img src="../assets/logo-horizontal.png" alt="Escuela Crisálida" class="logo-horizontal" />
+      </div>
+      <a href="https://mpago.la/2cBFd48" target="_blank" class="nav-cta">Acceder a Tarología I</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-tag">Espacio de Autoconocimiento</div>
+        <h1>Hay momentos en la vida donde necesitás entender lo que te está pasando.</h1>
+        <p>
+          Crisálida es un espacio donde integrás Tarot, Astrología, Psicología Profunda y Filosofía
+          para interpretarte, reconocerte y tomar decisiones con mayor claridad.
+        </p>
+        <p style="font-size:16px; color:#f4d58d; margin-top:-8px; margin-bottom:20px;">
+          Más de 500 alumnos formados desde 2016
+        </p>
+        <div class="hero-buttons">
+          <a href="https://mpago.la/2cBFd48" target="_blank" class="btn btn-primary">Acceder a Tarología I</a>
+          <a href="index.html" class="btn btn-secondary">Ya soy alumno</a>
+        </div>
+        <div class="hero-note">
+          Entrás por el Tarot. Te quedás por la transformación.
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="../assets/foto-clase-1.jpg" alt="Clase Escuela Crisálida" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Esto es para vos si sentís que…</h2>
+      <p class="section-subtitle">
+        Estás en un momento de cambio, querés entenderte más profundamente y buscás herramientas reales,
+        no información suelta.
+      </p>
+
+      <div class="cards-3">
+        <div class="card">
+          <h3>Querés claridad</h3>
+          <p>
+            Hay cosas que te están pasando y sentís que necesitás comprenderlas desde un nivel más profundo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Buscás herramientas</h3>
+          <p>
+            Te interesa el Tarot y la Astrología, pero no desde lo superficial, sino como caminos reales de interpretación.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Querés avanzar</h3>
+          <p>
+            No querés quedarte atrapado en la confusión. Querés reconocer patrones, tomar decisiones y evolucionar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Qué es Crisálida</h2>
+      <p class="section-subtitle">
+        No es un curso aislado. Es una experiencia de formación y transformación personal.
+      </p>
+
+      <div class="cards-3">
+        <div class="card">
+          <h3>Tarot</h3>
+          <ul class="list">
+            <li>Lectura simbólica profunda</li>
+            <li>Arcanos mayores y menores</li>
+            <li>Interpretación aplicada</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Astrología</h3>
+          <ul class="list">
+            <li>Comprensión inicial de la carta</li>
+            <li>Mirada evolutiva</li>
+            <li>Conexión con procesos vitales</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Autoconocimiento</h3>
+          <ul class="list">
+            <li>Psicología Profunda y filosofía</li>
+            <li>Comprensión de obstáculos</li>
+            <li>Herramientas para crear realidad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ══ CARTA NATAL ══ -->
+  <section class="carta-section" id="carta-natal">
+    <div class="container">
+      <h2 class="section-title">Tu Carta Natal, gratis</h2>
+      <p class="section-subtitle">Descubrí el mapa cósmico que guía tu alma. Ingresá tus datos y revelá tus posiciones planetarias al momento de nacer.</p>
+
+      <div id="cn-form-wrap" style="max-width:680px;margin:0 auto;">
+        <div class="card" style="padding:32px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="grid-column:1/-1;">
+              <label class="cf-label">Tu nombre</label>
+              <input class="cf-input" type="text" id="cn-name" placeholder="¿Cómo te llamás?">
+            </div>
+            <div>
+              <label class="cf-label">Fecha de nacimiento</label>
+              <input class="cf-input" type="date" id="cn-date" max="2015-01-01">
+            </div>
+            <div>
+              <label class="cf-label">Ciudad de nacimiento</label>
+              <input class="cf-input" type="text" id="cn-city" placeholder="Ej: Buenos Aires">
+            </div>
+            <div style="grid-column:1/-1;">
+              <label class="cf-label">Hora de nacimiento</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <input class="cf-input" type="number" id="cn-hour" placeholder="Hora (0-23)" min="0" max="23">
+                <input class="cf-input" type="number" id="cn-min" placeholder="Minutos" min="0" max="59">
+              </div>
+              <label class="cf-unknown">
+                <input type="checkbox" id="cn-unk">
+                <span class="cf-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span style="font-size:13px;color:#d8cfff;">No conozco mi hora exacta</span>
+              </label>
+            </div>
+            <div style="grid-column:1/-1;">
+              <label class="cf-label">Tu email</label>
+              <input class="cf-input" type="email" id="cn-email" placeholder="hola@ejemplo.com">
+            </div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="calcularCarta()">
+            ☽ Calcular mi carta natal
+          </button>
+          <p style="text-align:center;font-size:12px;color:rgba(216,207,255,0.4);margin-top:10px;">🔒 Tu información es privada. No compartimos tus datos.</p>
+        </div>
+      </div>
+
+      <div id="cn-loading" style="display:none;flex-direction:column;align-items:center;gap:16px;padding:48px 0;text-align:center;">
+        <div class="orbit-ring"></div>
+        <div style="font-size:15px;color:#d8cfff;font-style:italic;">Consultando las esferas celestiales…</div>
+      </div>
+
+      <div id="cn-result" style="display:none;max-width:680px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:28px;animation:fadeUp .8s ease both;">
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#f4d58d;margin-bottom:12px;">Tu mapa del alma</div>
+          <div id="cn-res-name" style="font-size:2rem;color:white;margin-bottom:6px;"></div>
+          <div id="cn-res-date" style="font-size:12px;color:#d8cfff;letter-spacing:1px;text-transform:uppercase;"></div>
+        </div>
+        <div style="display:flex;justify-content:center;margin:24px 0;">
+          <svg id="cn-wheel" viewBox="0 0 300 300" style="width:min(280px,85vw);height:min(280px,85vw);animation:wheelIn 1.2s cubic-bezier(0.16,1,0.3,1) both;"></svg>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
+          <div class="card" style="text-align:center;padding:16px 8px;">
+            <div style="font-size:22px;margin-bottom:6px;">☉</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(216,207,255,0.5);margin-bottom:4px;">Sol</div>
+            <div id="cn-sun-sign" style="font-size:1.1rem;color:white;"></div>
+            <div id="cn-sun-deg" style="font-size:10px;color:#d8cfff;margin-top:2px;"></div>
+          </div>
+          <div class="card" style="text-align:center;padding:16px 8px;">
+            <div style="font-size:22px;margin-bottom:6px;">☽</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(216,207,255,0.5);margin-bottom:4px;">Luna</div>
+            <div id="cn-moon-sign" style="font-size:1.1rem;color:white;"></div>
+            <div id="cn-moon-deg" style="font-size:10px;color:#d8cfff;margin-top:2px;"></div>
+          </div>
+          <div class="card" style="text-align:center;padding:16px 8px;">
+            <div style="font-size:22px;margin-bottom:6px;">↑</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(216,207,255,0.5);margin-bottom:4px;">Ascendente</div>
+            <div id="cn-asc-sign" style="font-size:1.1rem;color:white;"></div>
+            <div id="cn-asc-deg" style="font-size:10px;color:#d8cfff;margin-top:2px;"></div>
+          </div>
+        </div>
+        <div class="card" style="padding:24px 28px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">Posiciones planetarias</div>
+          <div id="cn-planet-table"></div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#f4d58d;margin-bottom:10px;">Interpretación de tu Sol</div>
+            <div id="cn-interp" style="font-size:1rem;font-style:italic;color:#d8cfff;line-height:1.75;"></div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;padding:28px 24px;margin-top:14px;background:rgba(184,76,255,0.06);border-color:rgba(184,76,255,0.2);">
+          <h3 style="font-size:1.5rem;margin-bottom:10px;">Tu carta es el comienzo del camino</h3>
+          <p style="color:#d8cfff;font-size:14px;margin-bottom:18px;line-height:1.6;">En Crisálida aprendés a leer estos símbolos en profundidad — en tu vida, tus relaciones y tu camino espiritual.</p>
+          <a href="https://mpago.la/2cBFd48" target="_blank" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">✦ Acceder a Tarología I</a>
+          <div style="margin-top:12px;"><button onclick="resetCarta()" style="background:none;border:none;color:#d8cfff;font-size:13px;cursor:pointer;text-decoration:underline;">↺ Calcular otra carta</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TIRADA TAROT ══ -->
+  <section class="tarot-section" id="tirada-tarot">
+    <div class="container">
+      <h2 class="section-title">Tirada en Cruz · Tarot de Marsella</h2>
+      <p class="section-subtitle">Elegí tus cartas · La IA de Crisálida interpreta tu tirada integrando el autoconocimiento y lo sagrado.</p>
+      <div class="divina-tag">✦ Todo con Dios · Nada sin Él ✦</div>
+
+      <div class="card" style="max-width:680px;margin:32px auto;padding:24px;">
+        <label class="cf-label">Tu pregunta o intención</label>
+        <textarea class="cf-input" id="tt-pregunta" rows="2" placeholder="Escribí desde el corazón lo que querés comprender hoy…" style="resize:none;"></textarea>
+        <button class="btn btn-primary" style="width:100%;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="tirarCartas()">
+          ✦ Revelar mi tirada
+        </button>
+      </div>
+
+      <div id="tt-spread" style="display:none;">
+        <p style="text-align:center;font-size:13px;color:#a090c0;margin-bottom:24px;">Hacé clic en cada carta para revelarla · Lee en orden</p>
+        <div id="tt-cross" style="display:grid;grid-template-areas:'. top .' 'left center right' '. bottom .';grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:440px;margin:0 auto 40px;"></div>
+        <div id="tt-interps" style="max-width:680px;margin:0 auto;"></div>
+        <div id="tt-synthesis" style="display:none;max-width:680px;margin:20px auto 0;background:rgba(184,76,255,0.06);border:1px solid rgba(184,76,255,0.2);border-radius:20px;padding:28px 24px;"></div>
+        <div id="tt-cta" style="display:none;max-width:680px;margin:20px auto 0;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px 24px;">
+          <h3 style="font-size:1.5rem;margin-bottom:10px;">Las cartas hablaron. Ahora profundizá.</h3>
+          <p style="color:#d8cfff;font-size:14px;margin-bottom:18px;line-height:1.6;">En el curso de Tarología aprendés a leer estos símbolos con criterio real — donde el autoconocimiento y lo sagrado se integran.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+            <a href="https://mpago.la/2cBFd48" target="_blank" class="btn btn-primary">✦ Acceder a Tarología I</a>
+            <button onclick="resetTarot()" class="btn btn-secondary">↺ Nueva tirada</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Una escuela con historia real</h2>
+      <p class="section-subtitle">
+        Esto no nace de cero. Hay años de formación, grupos, encuentros, certificados y personas transitando este camino.
+      </p>
+
+      <div class="authority-grid">
+        <img src="../assets/foto-clase-2.jpg" alt="Clase real 1" />
+        <img src="../assets/foto-grupo.jpg" alt="Grupo de alumnos" />
+        <img src="../assets/foto-certificado.jpg" alt="Certificación Crisálida" />
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>+500</strong>
+          <span>Alumnos formados en este camino</span>
+        </div>
+        <div class="stat">
+          <strong>2016</strong>
+          <span>Desde cuando viene formándose este camino</span>
+        </div>
+        <div class="stat">
+          <strong>Clases en vivo</strong>
+          <span>Acompañamiento constante</span>
+        </div>
+        <div class="stat">
+          <strong>4</strong>
+          <span>Formaciones principales dentro del espacio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Qué incluye tu acceso</h2>
+      <p class="section-subtitle">
+        Entrás a un espacio vivo de aprendizaje y evolución.
+      </p>
+
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="numero">FORMACIÓN 01</div>
+          <h3>Tarología I</h3>
+          <p>Base, fundamentos, estructura del Tarot y primeros pasos de interpretación.</p>
+        </div>
+        <div class="program-card">
+          <div class="numero">FORMACIÓN 02</div>
+          <h3>Tarología II</h3>
+          <p>Profundización, criterio de lectura y ampliación del enfoque simbólico.</p>
+        </div>
+        <div class="program-card">
+          <div class="numero">FORMACIÓN 03</div>
+          <h3>Tarología III</h3>
+          <p>Integración avanzada, comprensión más profunda y aplicación del Tarot en la vida real.</p>
+        </div>
+        <div class="program-card">
+          <div class="numero">FORMACIÓN 04</div>
+          <h3>Astrología Inicial</h3>
+          <p>Primer acercamiento a la astrología como herramienta de autoconocimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Qué cambia cuando entrás</h2>
+      <p class="section-subtitle">
+        No se trata solo de estudiar contenido. Se trata de comprender mejor tu vida.
+      </p>
+
+      <div class="benefits-grid">
+        <div class="benefit">✔ Dejás de memorizar y empezás a interpretar.</div>
+        <div class="benefit">✔ Reconocés patrones y símbolos en tu vida cotidiana.</div>
+        <div class="benefit">✔ Ganás criterio para leer el Tarot con profundidad.</div>
+        <div class="benefit">✔ Empezás a tomar decisiones con más claridad interna.</div>
+        <div class="benefit">✔ Accedés a clases en vivo y material complementario.</div>
+        <div class="benefit">✔ Entrás en una experiencia que puede seguir creciendo con vos.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="precio">
+    <div class="container">
+      <div class="price-box">
+        <div class="price-tag">Tarología I — Acceso completo</div>
+        <div class="price">$97.000 ARS</div>
+        <p>
+          Tu primer paso dentro de Crisálida: base, fundamentos y primeros pasos de interpretación del Tarot.
+        </p>
+        <p style="color:#f4d58d; font-weight:bold;">
+          Acceso inmediato luego del pago a:
+        </p>
+
+        <ul class="price-includes">
+          <li>Formación completa de Tarología I</li>
+          <li>Masterclass intensiva</li>
+          <li>Clases en vivo</li>
+          <li>Material descargable en PDF</li>
+          <li>Posibilidad de continuar con Tarología II, III y Astrología Inicial</li>
+        </ul>
+
+        <a href="https://mpago.la/2cBFd48" target="_blank" class="btn btn-primary">Acceder a Tarología I</a>
+
+        <p style="margin-top:18px; font-size:14px; color:rgba(255,255,255,0.45);">
+          Las demás formaciones (Tarología II, III y Astrología Inicial) estarán disponibles próximamente con acceso independiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>¿Necesito saber algo antes de entrar?</h3>
+          <p>No. Está pensado para personas que quieren empezar y también para quienes buscan profundizar con criterio real.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Es solo Tarot?</h3>
+          <p>No. El Tarot es una puerta, pero el espacio integra también astrología, psicología, filosofía y autoconocimiento.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Voy a tener acompañamiento?</h3>
+          <p>Sí. La propuesta incluye clases en vivo y un espacio que puede seguir creciendo con nuevos contenidos y recursos.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Esto es un curso cerrado?</h3>
+          <p>No del todo. Ya hay material real y una base sólida, pero la visión es que Crisálida siga expandiéndose como plataforma viva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2>No es un gasto. Es una inversión en comprenderte.</h2>
+      <p>
+        Si sentís que estás en un momento donde necesitás entender lo que te pasa,
+        este espacio puede ser el comienzo de una nueva etapa.
+      </p>
+      <a href="https://mpago.la/2tkWYEM" target="_blank" class="btn btn-primary">Quiero entrar a Tarología I</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Escuela Crisálida · Espacio de Autoconocimiento
+    </div>
+  </footer>
+<script>
+// ══ ASTRO ══
+const SIGNS=['Aries','Tauro','Géminis','Cáncer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis'];
+const GLYPHS=['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+const SC=['#e06060','#80a060','#60b0d0','#7090a0','#e0a040','#90a060','#90b0c0','#b06080','#c07840','#a09060','#6090c0','#8090b0'];
+const PL=[{n:'Sol',s:'☉',k:'sun'},{n:'Luna',s:'☽',k:'moon'},{n:'Mercurio',s:'☿',k:'mercury'},{n:'Venus',s:'♀',k:'venus'},{n:'Marte',s:'♂',k:'mars'},{n:'Júpiter',s:'♃',k:'jupiter'},{n:'Saturno',s:'♄',k:'saturn'},{n:'Urano',s:'⛢',k:'uranus'},{n:'Neptuno',s:'♆',k:'neptune'},{n:'Plutón',s:'♇',k:'pluto'}];
+const SUN_I={Aries:'Tu Sol en Aries te otorga un espíritu pionero que impulsa el inicio de nuevos ciclos. Naciste para liderar, para abrir caminos donde otros ven muros.',Tauro:'Tu Sol en Tauro te conecta con la belleza del mundo material y los afectos duraderos. Construís con paciencia lo que el tiempo no puede borrar.',Géminis:'Tu Sol en Géminis te otorga una mente brillante y versátil. Tu propósito es comunicar, aprender y tender puentes entre mundos.',Cáncer:'Tu Sol en Cáncer teje tu identidad con la memoria y el amor. Tenés una capacidad única de cuidar y nutrir, creando hogares en los corazones que tocás.',Leo:'Tu Sol en Leo irradia una luz que no puede ocultarse. Tu propósito es crear, expresar y compartir generosamente los dones que el fuego solar depositó en vos.',Virgo:'Tu Sol en Virgo te da un ojo certero para lo esencial y un don para el servicio transformador. Ves el orden donde otros ven caos.',Libra:'Tu Sol en Libra te orienta hacia la belleza, la justicia y el encuentro genuino. Tu propósito es crear armonía y revelar que la paz es también una forma de poder.',Escorpio:'Tu Sol en Escorpio te otorga una profundidad sin fondo y el don de la transformación. Tocás lo que otros temen, y en ese tacto devolvés la vida a lo que parecía muerto.',Sagitario:'Tu Sol en Sagitario te impulsa hacia el horizonte con una fe que nada logra apagar. Naciste para explorar, enseñar y expandir los mapas del mundo conocido.',Capricornio:'Tu Sol en Capricornio teje disciplina y visión en una voluntad que construye imperios lentos y sólidos. El tiempo es tu aliado más fiel.',Acuario:'Tu Sol en Acuario te sitúa un paso adelante del presente. Ves el futuro con claridad y sentís el llamado a servir de formas que no tienen precedente.',Piscis:'Tu Sol en Piscis disuelve los bordes entre lo visible y lo invisible. Sos un canal entre mundos, con una compasión tan vasta que el amor que entregás no tiene fronteras.'};
+
+function jdn(y,m,d){const a=Math.floor((14-m)/12),Y=y+4800-a,M=m+12*a-3;return d+Math.floor((153*M+2)/5)+365*Y+Math.floor(Y/4)-Math.floor(Y/100)+Math.floor(Y/400)-32045;}
+function calcChart(y,mo,d,h,mi,u){
+  const jd=jdn(y,mo,d)-jdn(2000,1,1.5)+(h+mi/60)/24,T=jd/36525;
+  const L=[(280.460+36000.771*T)%360,(218.316+481267.881*T)%360,(252.250+149472.675*T)%360,(181.980+58517.816*T)%360,(355.433+19140.300*T)%360,(34.351+3034.906*T)%360,(50.077+1222.114*T)%360,(314.055+428.049*T)%360,(304.349+218.461*T)%360,(238.929+144.960*T)%360];
+  const p=[1.915,6.289,1.916,0.769,0.933,1.305,0.204,0.047,0.011,0];
+  const a=[(357.529+35999.050*T)%360,(134.963+477198.868*T)%360,(357.529+35999.050*T)%360,(212.436+58517.816*T)%360,(19.373+19140.300*T)%360,(19.897+3034.906*T)%360,(316.967+1222.114*T)%360,(142.955+428.049*T)%360,(256.228+218.461*T)%360,(14.882+144.960*T)%360];
+  const lons=L.map((l,i)=>{let v=l+p[i]*Math.sin(a[i]*Math.PI/180);return((v%360)+360)%360;});
+  let asc=null;if(!u){const G=((280.46061837+360.98564736629*jd)%360+360)%360,e=23.439-0.0000004*T,ar=Math.atan2(Math.cos(G*Math.PI/180),-(Math.sin(G*Math.PI/180)*Math.cos(e*Math.PI/180)));asc=((ar*180/Math.PI)+360)%360;}
+  const ts=lon=>{const i=Math.floor(lon/30),dg=lon-i*30,d2=Math.floor(dg),m2=Math.floor((dg-d2)*60);return{sign:SIGNS[i],glyph:GLYPHS[i],deg:d2,min:m2,idx:i,color:SC[i],lon};};
+  return{sun:ts(lons[0]),moon:ts(lons[1]),mercury:ts(lons[2]),venus:ts(lons[3]),mars:ts(lons[4]),jupiter:ts(lons[5]),saturn:ts(lons[6]),uranus:ts(lons[7]),neptune:ts(lons[8]),pluto:ts(lons[9]),asc:asc!==null?ts(asc):null};
+}
+function houseOf(pL,aL){return Math.floor(((pL-aL+360)%360)/30)+1;}
+
+function drawWheel(chart){
+  const svg=document.getElementById('cn-wheel');svg.innerHTML='';
+  const ns='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(ns,t);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e;};
+  const cx=150,cy=150,R=136,r1=104,r2=76,r3=50;
+  svg.appendChild(mk('circle',{cx,cy,r:R,fill:'none',stroke:'rgba(255,255,255,0.08)','stroke-width':'1'}));
+  svg.appendChild(mk('circle',{cx,cy,r:r1,fill:'none',stroke:'rgba(255,255,255,0.06)','stroke-width':'0.5'}));
+  svg.appendChild(mk('circle',{cx,cy,r:r2,fill:'#140f21',stroke:'rgba(255,255,255,0.06)','stroke-width':'6'}));
+  svg.appendChild(mk('circle',{cx,cy,r:r3,fill:'rgba(45,31,71,0.8)',stroke:'rgba(184,76,255,0.15)','stroke-width':'1'}));
+  for(let i=0;i<12;i++){
+    const ag=(i*30-90)*Math.PI/180;
+    svg.appendChild(mk('line',{x1:cx+r3*Math.cos(ag),y1:cy+r3*Math.sin(ag),x2:cx+R*Math.cos(ag),y2:cy+R*Math.sin(ag),stroke:'rgba(255,255,255,0.07)','stroke-width':'0.5'}));
+    const am=(i*30+15-90)*Math.PI/180,rm=(r1+R)/2;
+    const t=mk('text',{x:cx+rm*Math.cos(am),y:cy+rm*Math.sin(am),'text-anchor':'middle','dominant-baseline':'central',fill:SC[i],'font-size':'11',opacity:'0.75'});
+    t.textContent=GLYPHS[i];svg.appendChild(t);
+  }
+  const used=[];
+  [{k:'sun',s:'☉'},{k:'moon',s:'☽'},{k:'mercury',s:'☿'},{k:'venus',s:'♀'},{k:'mars',s:'♂'},{k:'jupiter',s:'♃'},{k:'saturn',s:'♄'}].forEach(pl=>{
+    const p=chart[pl.k];if(!p)return;let deg=p.lon,tr=0;
+    while(used.some(u=>Math.abs(u-deg)<11||Math.abs(u-deg)>349)&&tr<8){deg+=6;tr++;}
+    used.push(deg);const rp=(r1+r2)/2+2,ag=(deg-90)*Math.PI/180;
+    svg.appendChild(mk('circle',{cx:cx+rp*Math.cos(ag),cy:cy+rp*Math.sin(ag),r:'2.5',fill:p.color,opacity:'0.9'}));
+    const ts=mk('text',{x:cx+(rp+13)*Math.cos(ag),y:cy+(rp+13)*Math.sin(ag),'text-anchor':'middle','dominant-baseline':'central',fill:p.color,'font-size':'10'});ts.textContent=pl.s;svg.appendChild(ts);
+  });
+  if(chart.asc){const ag=(chart.asc.lon-90)*Math.PI/180;svg.appendChild(mk('line',{x1:cx,y1:cy,x2:cx+r1*Math.cos(ag),y2:cy+r1*Math.sin(ag),stroke:'#f4d58d','stroke-width':'1.2',opacity:'0.5','stroke-dasharray':'3 3'}));}
+  const ct=mk('text',{x:cx,y:cy,'text-anchor':'middle','dominant-baseline':'central',fill:'rgba(184,76,255,0.35)','font-size':'16'});ct.textContent='✦';svg.appendChild(ct);
+}
+
+document.getElementById('cn-unk').addEventListener('change',function(){
+  const d=this.checked;['cn-hour','cn-min'].forEach(id=>{const e=document.getElementById(id);e.disabled=d;e.style.opacity=d?'0.3':'1';});
+});
+
+async function calcularCarta(){
+  const name=document.getElementById('cn-name').value.trim(),date=document.getElementById('cn-date').value,city=document.getElementById('cn-city').value.trim(),email=document.getElementById('cn-email').value.trim(),unk=document.getElementById('cn-unk').checked,hour=document.getElementById('cn-hour').value,min=document.getElementById('cn-min').value;
+  if(!name||!date||!city||!email||!email.includes('@')){alert('Completá todos los campos.');return;}
+  if(!unk&&(hour===''||min==='')){alert('Ingresá la hora o marcá que no la conocés.');return;}
+  const[y,mo,d]=date.split('-').map(Number),h=unk?12:parseInt(hour)||12,m=unk?0:parseInt(min)||0;
+  document.getElementById('cn-form-wrap').style.display='none';
+  document.getElementById('cn-loading').style.display='flex';
+  try{await fetch('/usuarios',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:name,email,password:'carta-'+Date.now(),ciudad:city,origen:'carta-natal'})});}catch(e){}
+  setTimeout(()=>{
+    const chart=calcChart(y,mo,d,h,m,unk);
+    document.getElementById('cn-loading').style.display='none';
+    document.getElementById('cn-result').style.display='block';
+    renderCarta(name,date,city,chart,unk);
+    document.getElementById('cn-result').scrollIntoView({behavior:'smooth',block:'start'});
+  },2000);
+}
+function renderCarta(name,date,city,chart,unk){
+  const first=name.split(' ')[0];
+  document.getElementById('cn-res-name').innerHTML='Carta de <em style="color:#f4d58d;font-style:italic">'+first+'</em>';
+  const[y,mo,d]=date.split('-').map(Number),ms=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('cn-res-date').textContent=d+' de '+ms[mo-1]+' de '+y+' · '+city;
+  document.getElementById('cn-sun-sign').textContent=chart.sun.sign;
+  document.getElementById('cn-sun-deg').textContent=chart.sun.deg+'°'+String(chart.sun.min).padStart(2,'0')+"'";
+  document.getElementById('cn-moon-sign').textContent=chart.moon.sign;
+  document.getElementById('cn-moon-deg').textContent=chart.moon.deg+'°'+String(chart.moon.min).padStart(2,'0')+"'";
+  if(chart.asc&&!unk){document.getElementById('cn-asc-sign').textContent=chart.asc.sign;document.getElementById('cn-asc-deg').textContent=chart.asc.deg+'°'+String(chart.asc.min).padStart(2,'0')+"'";}
+  else{document.getElementById('cn-asc-sign').textContent='—';document.getElementById('cn-asc-deg').textContent='hora desconocida';}
+  drawWheel(chart);
+  const aL=chart.asc?chart.asc.lon:0,tbl=document.getElementById('cn-planet-table');tbl.innerHTML='';
+  PL.forEach(pl=>{const p=chart[pl.k],house=chart.asc?houseOf(p.lon,aL):null;const row=document.createElement('div');row.className='p-row';row.innerHTML=`<span class="p-sym" style="color:${p.color}">${pl.s}</span><span class="p-name">${pl.n}</span><span class="p-sign">${p.sign} ${p.glyph}</span><span class="p-deg">${p.deg}°${String(p.min).padStart(2,'0')}'</span>${house?`<span class="p-house">Casa ${house}</span>`:''}`; tbl.appendChild(row);});
+  document.getElementById('cn-interp').textContent=SUN_I[chart.sun.sign]||'';
+}
+function resetCarta(){document.getElementById('cn-result').style.display='none';document.getElementById('cn-form-wrap').style.display='block';document.getElementById('carta-natal').scrollIntoView({behavior:'smooth'});}
+
+// ══ TAROT ══
+const DECK = [
+  {id:0,esp:'El Loco'},{id:1,esp:'El Mago'},{id:2,esp:'La Papisa'},{id:3,esp:'La Emperatriz'},
+  {id:4,esp:'El Emperador'},{id:5,esp:'El Papa'},{id:6,esp:'El Enamorado'},{id:7,esp:'El Carro'},
+  {id:8,esp:'La Justicia'},{id:9,esp:'El Ermitaño'},{id:10,esp:'La Rueda de Fortuna'},{id:11,esp:'La Fuerza'},
+  {id:12,esp:'El Colgado'},{id:13,esp:'La Muerte'},{id:14,esp:'La Templanza'},{id:15,esp:'El Diablo'},
+  {id:16,esp:'La Casa Dios'},{id:17,esp:'La Estrella'},{id:18,esp:'La Luna'},{id:19,esp:'El Sol'},
+  {id:20,esp:'El Juicio'},{id:21,esp:'El Mundo'},
+  {id:22,esp:'As de Copas'},{id:23,esp:'2 de Copas'},{id:24,esp:'3 de Copas'},{id:25,esp:'4 de Copas'},
+  {id:26,esp:'5 de Copas'},{id:27,esp:'6 de Copas'},{id:28,esp:'7 de Copas'},{id:29,esp:'8 de Copas'},
+  {id:30,esp:'9 de Copas'},{id:31,esp:'10 de Copas'},{id:32,esp:'Sota de Copas'},{id:33,esp:'Reina de Copas'},
+  {id:34,esp:'Rey de Copas'},{id:35,esp:'Caballero de Copas'},
+  {id:36,esp:'As de Espadas'},{id:37,esp:'2 de Espadas'},{id:38,esp:'3 de Espadas'},{id:39,esp:'4 de Espadas'},
+  {id:40,esp:'5 de Espadas'},{id:41,esp:'6 de Espadas'},{id:42,esp:'7 de Espadas'},{id:43,esp:'8 de Espadas'},
+  {id:44,esp:'9 de Espadas'},{id:45,esp:'10 de Espadas'},{id:46,esp:'Sota de Espadas'},{id:47,esp:'Reina de Espadas'},
+  {id:48,esp:'Rey de Espadas'},{id:49,esp:'Caballero de Espadas'},
+  {id:50,esp:'As de Bastos'},{id:51,esp:'2 de Bastos'},{id:52,esp:'3 de Bastos'},{id:53,esp:'4 de Bastos'},
+  {id:54,esp:'5 de Bastos'},{id:55,esp:'6 de Bastos'},{id:56,esp:'7 de Bastos'},{id:57,esp:'8 de Bastos'},
+  {id:58,esp:'9 de Bastos'},{id:59,esp:'10 de Bastos'},{id:60,esp:'Sota de Bastos'},{id:61,esp:'Reina de Bastos'},
+  {id:62,esp:'Rey de Bastos'},{id:63,esp:'Caballero de Bastos'},
+  {id:64,esp:'As de Oros'},{id:65,esp:'2 de Oros'},{id:66,esp:'3 de Oros'},{id:67,esp:'4 de Oros'},
+  {id:68,esp:'5 de Oros'},{id:69,esp:'6 de Oros'},{id:70,esp:'7 de Oros'},{id:71,esp:'8 de Oros'},
+  {id:72,esp:'9 de Oros'},{id:73,esp:'10 de Oros'},{id:74,esp:'Sota de Oros'},{id:75,esp:'Reina de Oros'},
+  {id:76,esp:'Rey de Oros'},{id:77,esp:'Caballero de Oros'},
+];
+// Card image path — relative to landing.html location
+function cardImg(id) { return \`Activos/cartas/carta_\${String(id).padStart(2,'0')}.webp\`; }
+
+const POSITIONS=[{label:'Pasado',area:'top'},{label:'Obstáculo',area:'left'},{label:'Presente',area:'center'},{label:'Consejo',area:'right'},{label:'Futuro',area:'bottom'}];
+const INTERPS={0:"El Loco representa el inicio libre de todo condicionamiento. Camina sostenido por una confianza profunda en la vida, sin mirar atrás.",1:"El Mago tiene todos los recursos sobre su mesa. La pregunta no es si podés — es si estás dispuesto a crear con lo que ya tenés.",2:"La Papisa guarda un saber que no se dice, sino que se transmite. Invita al silencio interior, a escuchar más allá de las palabras.",3:"La Emperatriz es la fuerza creativa que da forma al mundo. Simboliza la abundancia que nace de estar en contacto con la propia naturaleza.",4:"El Emperador estructura y ordena. Habla de la necesidad de marcos concretos y de construir desde los propios valores.",5:"El Papa convoca a la transmisión. Hay algo que aprender de otro — o que ya es tiempo de dar.",6:"El Enamorado enfrenta una elección que define el camino. Hay que elegir desde adentro, no desde el miedo.",7:"El Carro avanza. La voluntad está en movimiento y los opuestos comienzan a alinearse. Sostené el rumbo.",8:"La Justicia pide discernimiento y el coraje de ver la situación tal como es, sin adornos ni evasiones.",9:"El Ermitaño ilumina su propio camino. Hay algo que no se encuentra afuera; hay que buscarlo adentro.",10:"La Rueda gira. Lo que fue, cambia. Lo que viene, se acerca. La sabiduría está en fluir con el movimiento.",11:"La Fuerza no vence al animal por la fuerza bruta sino por el amor. La integración de lo instintivo desde la consciencia.",12:"El Colgado ve el mundo desde otra perspectiva. Hay sabiduría en detenerse y en soltar el control.",13:"XIII es la transformación pura. Lo que muere aquí abre espacio a lo nuevo. No hay pérdida, hay renovación.",14:"La Templanza es el arte del equilibrio dinámico. Mezcla sin perder, adapta sin traicionar.",15:"El Diablo encadena a quienes se creen encadenados. La trampa más real es la que creemos que no podemos soltar.",16:"La Casa Dios derrumba lo que se construyó sobre bases falsas. La caída libera. Lo esencial siempre permanece.",17:"La Estrella vierte generosamente hacia adentro y hacia afuera. Es la esperanza que no pide, que simplemente es.",18:"La Luna ilumina con luz prestada. El camino no está claro, pero hay que seguir. Los miedos son parte del recorrido.",19:"El Sol brilla sin distinción. Es la alegría, la claridad, la energía vital que sostiene todo lo que crece.",20:"El Juicio llama. Algo despierta que estaba dormido. Es la hora de responder con todo lo que uno es.",21:"El Mundo es la integración total. Se ha completado un ciclo. La danzarina sostiene el movimiento y el centro a la vez.",22:"As de Copas: el origen de toda emoción verdadera. Una copa que desborda hacia el amor sin condiciones.",23:"2 de Copas: el comienzo de un vínculo real, un intercambio que enriquece a ambos.",24:"3 de Copas: abundancia emocional, comunidad, gratitud por lo que se ha construido juntos.",25:"4 de Copas: la oportunidad está ahí, pero hace falta salir de la contemplación para verla.",26:"5 de Copas: hay pérdida real, pero también copas que siguen en pie. El duelo y lo que queda.",27:"6 de Copas: la memoria afectiva, las raíces. Lo pasado no está perdido: vive en quien somos.",28:"7 de Copas: abundancia de posibilidades, pero también el riesgo de quedarse solo en el sueño.",29:"8 de Copas: el trabajo emocional da sus frutos. La estructura interior se afirma con armonía.",30:"9 de Copas: plenitud emocional. El camino interno llegó a un punto de genuina madurez.",31:"10 de Copas: la realización del corazón. El amor que trasciende lo individual y toca a todos.",32:"Sota de Copas: sensible, intuitivo, abierto. Lleva consigo las aguas del inconsciente.",33:"Reina de Copas: empática, receptiva. Sabe que el amor verdadero no se impone, se entrega.",34:"Rey de Copas: integra la emoción con la autoridad. El líder que cuida, el padre que siente.",35:"Caballero de Copas: en movimiento hacia el amor y el ideal. El corazón que avanza sin rendirse.",36:"As de Espadas: la verdad que corta. El pensamiento que discrimina y libera. Una decisión que ya no puede postergarse.",37:"2 de Espadas: una encrucijada mental. La claridad vendrá del silencio, no del análisis.",38:"3 de Espadas: el dolor del pensamiento que se vuelve contra uno mismo. Hay que aprender a pensar distinto.",39:"4 de Espadas: el descanso necesario de la mente. Parar antes de volver a actuar.",40:"5 de Espadas: conflicto y tensión. Pero también la posibilidad de aprender de la adversidad.",41:"6 de Espadas: el pensamiento se organiza. Hay claridad emergente y el camino se abre.",42:"7 de Espadas: creatividad, astucia, búsqueda de alternativas. Hay que evaluar los propios motivos.",43:"8 de Espadas: la mente atrapada en sus propios límites. Los bloqueos son mentales antes que reales.",44:"9 de Espadas: la crisis mental más intensa. Y lo que más duele también más enseña.",45:"10 de Espadas: el final de un ciclo agotador. El derrumbe que prepara la renovación.",46:"Sota de Espadas: atento, observador, aprendiendo. Es el inicio del verdadero discernimiento.",47:"Reina de Espadas: piensa con claridad fría. Ha atravesado el dolor y de él extrajo lucidez.",48:"Rey de Espadas: gobierna con justicia rigurosa. Su palabra pesa porque viene de principios reales.",49:"Caballero de Espadas: avanza sin dudar. La acción mental es veloz; hay que asegurarse de que apunta bien.",50:"As de Bastos: la chispa de la vida, la voluntad pura, el fuego que quiere crear.",51:"2 de Bastos: hay energía suficiente para el camino. El impulso existe; falta dirección.",52:"3 de Bastos: el fuego se organiza en equipo. La colaboración multiplica la fuerza individual.",53:"4 de Bastos: la estabilidad de lo construido. Un logro que merece celebrarse.",54:"5 de Bastos: el choque de fuerzas distintas. El conflicto puede ser creativo si hay respeto.",55:"6 de Bastos: la victoria ganada con esfuerzo. El reconocimiento llega cuando el trabajo fue real.",56:"7 de Bastos: hay que defender lo propio. La fe en uno mismo es la clave.",57:"8 de Bastos: el movimiento rápido, las cosas que por fin se ponen en marcha.",58:"9 de Bastos: resistencia casi agotada, pero queda un último esfuerzo que vale la pena.",59:"10 de Bastos: la carga es mucha. Hay que evaluar qué soltar para poder seguir.",60:"Sota de Bastos: el entusiasmo que empieza. Curioso, apasionado, listo para explorar.",61:"Reina de Bastos: conduce con carisma natural. Su presencia inspira; su fuego es generoso.",62:"Rey de Bastos: el líder visionario que convierte la visión en acción.",63:"Caballero de Bastos: galopa con determinación. El fuego en movimiento es su esencia.",64:"As de Oros: el germen de lo concreto. Una semilla de abundancia que pide ser cultivada.",65:"2 de Oros: malabarismo y adaptación. Gestión de recursos en movimiento constante.",66:"3 de Oros: el trabajo reconocido, la habilidad valorada. La artesanía como camino.",67:"4 de Oros: apego a lo que se tiene. La seguridad material puede volverse prisión.",68:"5 de Oros: la sensación de falta — y también la valentía de pedir ayuda.",69:"6 de Oros: la generosidad que circula. Dar y recibir en equilibrio es la ley de lo material.",70:"7 de Oros: la paciencia del que cultiva. Los frutos no llegan solos; hay que esperar con confianza.",71:"8 de Oros: el trabajo constante y meticuloso. La maestría viene de la dedicación sostenida.",72:"9 de Oros: la abundancia ganada con esfuerzo propio. La independencia material como logro real.",73:"10 de Oros: la herencia, lo que se transmite. La riqueza que tiene raíces y futuro.",74:"Sota de Oros: el aprendiz de lo concreto. Paciente, observador, con los pies en la tierra.",75:"Reina de Oros: cuida lo material con sabiduría. La abundancia verdadera incluye el cuerpo y la tierra.",76:"Rey de Oros: el constructor de imperios lentos. Sólido, confiable, generoso con lo que ha construido.",77:"Caballero de Oros: avanza con paso firme. Lo importante se construye con constancia, no con velocidad."};
+
+function buildBack(svgEl){
+  const ns='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(ns,t);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e;};
+  svgEl.innerHTML='';
+  svgEl.appendChild(mk('rect',{x:0,y:0,width:100,height:178,fill:'#0d0b18',rx:5}));
+  svgEl.appendChild(mk('rect',{x:2,y:2,width:96,height:174,fill:'none',stroke:'rgba(201,168,76,0.35)',rx:4,'stroke-width':'0.5'}));
+  const defs=mk('defs',{});const rg=mk('radialGradient',{id:'brg_'+svgEl.id,cx:'50%',cy:'45%',r:'55%'});
+  rg.appendChild(mk('stop',{offset:'0%','stop-color':'#2d1f47','stop-opacity':'0.7'}));rg.appendChild(mk('stop',{offset:'100%','stop-color':'#0d0b18','stop-opacity':'1'}));defs.appendChild(rg);svgEl.appendChild(defs);
+  svgEl.appendChild(mk('rect',{x:4,y:4,width:92,height:170,fill:`url(#brg_${svgEl.id})`,rx:3}));
+  const cx=50,cy=85;
+  [{d:`M${cx} ${cy} C${cx-18} ${cy-20} ${cx-32} ${cy-12} ${cx-26} ${cy+4} C${cx-20} ${cy+20} ${cx} ${cy+8} ${cx} ${cy}`,f:'rgba(184,76,255,0.2)',s:'rgba(184,76,255,0.5)'},{d:`M${cx} ${cy} C${cx+18} ${cy-20} ${cx+32} ${cy-12} ${cx+26} ${cy+4} C${cx+20} ${cy+20} ${cx} ${cy+8} ${cx} ${cy}`,f:'rgba(184,76,255,0.2)',s:'rgba(184,76,255,0.5)'},{d:`M${cx} ${cy} C${cx-14} ${cy+10} ${cx-22} ${cy+24} ${cx-14} ${cy+32} C${cx-6} ${cy+40} ${cx} ${cy+28} ${cx} ${cy}`,f:'rgba(127,60,255,0.15)',s:'rgba(127,60,255,0.4)'},{d:`M${cx} ${cy} C${cx+14} ${cy+10} ${cx+22} ${cy+24} ${cx+14} ${cy+32} C${cx+6} ${cy+40} ${cx} ${cy+28} ${cx} ${cy}`,f:'rgba(127,60,255,0.15)',s:'rgba(127,60,255,0.4)'}].forEach(w=>svgEl.appendChild(mk('path',{d:w.d,fill:w.f,stroke:w.s,'stroke-width':'0.6'})));
+  svgEl.appendChild(mk('ellipse',{cx,cy:cy+14,rx:2,ry:12,fill:'rgba(201,168,76,0.6)'}));
+  svgEl.appendChild(mk('circle',{cx,cy:cy-2,r:3,fill:'rgba(201,168,76,0.7)'}));
+  [{d:`M${cx} ${cy-2} C${cx-6} ${cy-14} ${cx-14} ${cy-18} ${cx-16} ${cy-22}`},{d:`M${cx} ${cy-2} C${cx+6} ${cy-14} ${cx+14} ${cy-18} ${cx+16} ${cy-22}`}].forEach(p=>svgEl.appendChild(mk('path',{d:p.d,stroke:'rgba(201,168,76,0.5)','stroke-width':'0.7',fill:'none'})));
+  [[cx-16,cy-22],[cx+16,cy-22]].forEach(([x,y])=>svgEl.appendChild(mk('circle',{cx:x,cy:y,r:'1.2',fill:'rgba(201,168,76,0.7)'})));
+  const bt=mk('text',{x:50,y:164,'text-anchor':'middle',fill:'rgba(201,168,76,0.4)',style:'font-size:4.5px;letter-spacing:2px;font-family:serif'});bt.textContent='CRISÁLIDA';svgEl.appendChild(bt);
+}
+
+let ttDrawn=[],ttFlipped=0,ttShownInterps=[];
+
+function buildCardSlot(idx,area,label){
+  const slot=document.createElement('div');
+  slot.className='tt-card-slot';slot.style.gridArea=area;
+  slot.innerHTML=`<div class="tt-card-label">${label}</div>
+    <div class="tt-card" id="ttcard-${idx}" onclick="ttFlip(${idx})">
+      <div class="tt-inner" id="ttinner-${idx}">
+        <div class="tt-face tt-back"><svg viewBox="0 0 100 178" style="width:90%;height:90%" id="ttsvg-${idx}"></svg></div>
+        <div class="tt-face tt-front"><img id="ttimg-${idx}" src="" alt="" loading="lazy"></div>
+      </div>
+    </div>`;
+  return slot;
+}
+
+function tirarCartas(){
+  const shuffled=[...DECK].sort(()=>Math.random()-0.5);
+  ttDrawn=shuffled.slice(0,5);ttFlipped=0;ttShownInterps=[];
+  document.getElementById('tt-interps').innerHTML='';
+  document.getElementById('tt-synthesis').style.display='none';document.getElementById('tt-synthesis').innerHTML='';
+  const cta=document.getElementById('tt-cta');if(cta)cta.style.display='none';
+  const cross=document.getElementById('tt-cross');cross.innerHTML='';
+  POSITIONS.forEach((pos,i)=>{cross.appendChild(buildCardSlot(i,pos.area,pos.label));});
+  setTimeout(()=>{
+    ttDrawn.forEach((card,i)=>{
+      buildBack(document.getElementById(`ttsvg-${i}`));
+      document.getElementById(`ttimg-${i}`).src=cardImg(card.id);
+      document.getElementById(`ttimg-${i}`).alt=card.esp;
+      document.getElementById(`ttinner-${i}`).classList.remove('flipped');
+      document.getElementById(`ttcard-${i}`).style.pointerEvents='auto';
+    });
+  },50);
+  document.getElementById('tt-spread').style.display='block';
+  document.getElementById('tt-spread').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function ttFlip(idx){
+  if(ttShownInterps.includes(idx))return;
+  document.getElementById(`ttinner-${idx}`).classList.add('flipped');
+  document.getElementById(`ttcard-${idx}`).style.pointerEvents='none';
+  ttShownInterps.push(idx);ttFlipped++;
+  setTimeout(()=>ttShowInterp(idx),700);
+}
+
+function ttShowInterp(idx){
+  const card=ttDrawn[idx],pos=POSITIONS[idx],grid=document.getElementById('tt-interps');
+  const div=document.createElement('div');div.className='interp-block';
+  div.innerHTML=`<div class="interp-pos-tag">${pos.label}</div><div class="interp-card-title">${card.esp}</div><div class="interp-body">${INTERPS[card.id]||''}</div>`;
+  grid.appendChild(div);
+  setTimeout(()=>div.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  if(ttFlipped===5)setTimeout(ttSynthesis,600);
+}
+
+async function ttSynthesis(){
+  const sw=document.getElementById('tt-synthesis');sw.style.display='block';
+  sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="display:flex;align-items:center;gap:12px;color:#d8cfff;font-style:italic;"><div class="orbit-ring"></div>&nbsp;Integrando el mensaje de las cartas…</div>`;
+  sw.scrollIntoView({behavior:'smooth',block:'nearest'});
+  const pregunta=document.getElementById('tt-pregunta').value.trim();
+  const cardsDesc=ttDrawn.map((c,i)=>`${POSITIONS[i].label}: ${c.esp}`).join(', ');
+  const prompt=`Sos intérprete de Tarot de Marsella desde el enfoque Crisálida — una escuela de autoconocimiento que integra Tarot, Astrología y espiritualidad. Tu voz es cálida, profunda y directa. Siempre terminás con: "Todo con Dios, nada sin Él."
+
+Pregunta del consultante: "${pregunta||'Lectura general'}"
+Tirada en Cruz: ${cardsDesc}
+
+Escribí una síntesis de 3 párrafos: el primero conecta las 5 cartas; el segundo habla del mensaje central; el tercero cierra con el puente espiritual terminando exactamente con "Todo con Dios, nada sin Él." Sin listas. Máx 200 palabras. Sé poético y certero.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    const text=data.content?.map(b=>b.text||'').join('')||'';
+    sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="font-size:1rem;font-style:italic;color:#f0ead8;line-height:1.85;">${text.replace(/
+
+/g,'<br><br>')}</div>`;
+  }catch(e){
+    sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="font-size:1rem;font-style:italic;color:#f0ead8;line-height:1.85;">Las cartas que aparecieron hoy forman un mensaje coherente. Cada arcano ilumina un aspecto de tu camino: lo que viviste, lo que enfrentás, lo que podría guiarte.<br><br>El mensaje central es la invitación a confiar en el proceso. Las cartas no predicen: revelan lo que ya estaba ahí, esperando ser visto con honestidad.<br><br>Hay algo en esta lectura que ya sabías pero no habías querido mirar todavía. Y detrás de cada símbolo hay una pregunta más profunda que no viene del mazo. Todo con Dios, nada sin Él.</div>`;
+  }
+  setTimeout(()=>{const cta=document.getElementById('tt-cta');if(cta){cta.style.display='block';cta.scrollIntoView({behavior:'smooth',block:'nearest'});}},600);
+}
+
+function resetTarot(){document.getElementById('tt-spread').style.display='none';document.getElementById('tt-pregunta').value='';document.getElementById('tirada-tarot').scrollIntoView({behavior:'smooth'});}
+</script>
+</body>
+</html>
+
+
