@@ -1330,9 +1330,7 @@ Escribí una síntesis de 3 párrafos: el primero conecta las 5 cartas; el segun
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
     const text=data.content?.map(b=>b.text||'').join('')||'';
-    sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="font-size:1rem;font-style:italic;color:#f0ead8;line-height:1.85;">${text.replace(/
-
-/g,'<br><br>')}</div>`;
+    sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="font-size:1rem;font-style:italic;color:#f0ead8;line-height:1.85;">${text.replace(/\n\n/g,'<br><br>')}</div>`;
   }catch(e){
     sw.innerHTML=`<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4d58d;margin-bottom:14px;">✦ Síntesis de la Tirada</div><div style="font-size:1rem;font-style:italic;color:#f0ead8;line-height:1.85;">Las cartas que aparecieron hoy forman un mensaje coherente. Cada arcano ilumina un aspecto de tu camino: lo que viviste, lo que enfrentás, lo que podría guiarte.<br><br>El mensaje central es la invitación a confiar en el proceso. Las cartas no predicen: revelan lo que ya estaba ahí, esperando ser visto con honestidad.<br><br>Hay algo en esta lectura que ya sabías pero no habías querido mirar todavía. Y detrás de cada símbolo hay una pregunta más profunda que no viene del mazo. Todo con Dios, nada sin Él.</div>`;
   }
