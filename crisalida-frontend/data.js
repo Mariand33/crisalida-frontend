@@ -5,7 +5,7 @@ window.usuariosData = [
   { email: "sabrina@crisalida.com", password: "crsld2026#", nombre: "Sabrina" },
   { email: "karina@crisalida.com", password: "creador26", nombre: "Karina" },
    { email: "maria@crisalida.com", password: "creador33", nombre: "Mary" },
-  { email: "rosy@crisalida.com", password: "creador33", nombre: "Rosy" }
+  { email: "rosy@crisalida.com", password: "creador33", nombre: "Rosy" },
    
   
   
