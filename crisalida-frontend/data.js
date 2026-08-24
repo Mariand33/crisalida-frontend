@@ -146,7 +146,7 @@ window.cursosData = [
             temas: ["Grado VIIII"],
             tipo: "clave"
           },
-          {
+                   {
             id: 12,
             titulo: "Clase 12 - Grado VIIII . El Ermitaño y El Sol (Parte 2)",
             videoId: "pVTBloY-QMI",
@@ -156,8 +156,7 @@ window.cursosData = [
             temas: ["Grado VIIII"],
             tipo: "clave"
           },
-           {
-          
+          {
             id: 13,
             titulo: "Clase 13 - Grado X . La Rueda de Fortuna y El Juicio",
             videoId: "uHA9JULWBRc",
@@ -166,9 +165,11 @@ window.cursosData = [
             resumen: "Integración final.",
             temas: ["Grado X"],
             tipo: "clave"
-          },
+          }
+        ]
+      },
 
-                // =========================
+      // =========================
       // MÓDULO 3
       // =========================
       {
@@ -215,7 +216,9 @@ window.cursosData = [
             tipo: "clave"
           }
         ]
-      },      // =========================
+      },
+
+      // =========================
       // MÓDULO 4
       // =========================
       {
