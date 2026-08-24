@@ -159,7 +159,7 @@ window.cursosData = [
            {
           id: 13,
             titulo: "Clase 13 - Grado X . La Rueda de Fortuna y El Juicio",
-            videoId: "tvCVSNWbLgs",
+            videoId:  "uHA9JULWBRc",
             pdf1: "#",
             pdf2: "#",
             resumen: "Integración final.",
@@ -169,7 +169,7 @@ window.cursosData = [
         ]
       },
 
-      // =========================
+            // =========================
       // MÓDULO 3
       // =========================
       {
@@ -178,35 +178,63 @@ window.cursosData = [
           {
             id: 13,
             titulo: "Clase 13 - Introducción a los Arcanos Menores",
-            videoId: "",
+            videoId: "dHGiybeg8s4",
             pdf1: "#",
             pdf2: "#",
             resumen: "Comprensión de lo cotidiano.",
             temas: ["Arcanos menores"],
-            tipo: "bloqueado"
+            tipo: "clave"
+          },
+          {
+            id: 14,
+            titulo: "Clase 14 - Arcanos Menores (Clase 2)",
+            videoId: "ozeL6MekbJ8",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "",
+            temas: ["Arcanos menores"],
+            tipo: "clave"
+          },
+          {
+            id: 15,
+            titulo: "Clase 15 - Arcanos Menores (Clase 3)",
+            videoId: "aIfCVkfQ7Wk",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "",
+            temas: ["Arcanos menores"],
+            tipo: "clave"
+          },
+          {
+            id: 16,
+            titulo: "Clase 16 - Arcanos Menores (Clase 4)",
+            videoId: "POVtY__zsnI",
+            pdf1: "#",
+            pdf2: "#",
+            resumen: "",
+            temas: ["Arcanos menores"],
+            tipo: "clave"
           }
         ]
       },
-
-      // =========================
+                 // =========================
       // MÓDULO 4
       // =========================
       {
         titulo: "Módulo 4 - Lectura e Interpretación",
         clases: [
           {
-            id: 14,
-            titulo: "Clase 14 - Cómo interpretar una lectura",
-            videoId: "",
+            id: 17,
+            titulo: "Clase 17 - Lectura e Interpretación",
+            videoId: "3lRW7ZbQw1A",
             pdf1: "#",
             pdf2: "#",
-            resumen: "Claves de lectura.",
-            temas: ["Lectura"],
-            tipo: "bloqueado"
+            resumen: "",
+            temas: ["Lectura e interpretación"],
+            tipo: "clave"
           }
         ]
       }
-
     ]
   }
 ];
